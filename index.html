@@ -213,9 +213,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .route{height:auto!important}.route-pin{position:static;height:auto;min-height:0;padding-block:72px}
   .track{flex-direction:column;width:auto;transform:none!important;gap:28px}
   .stop{width:auto;padding:0 0 0 48px}.stop::before{top:0;bottom:-28px;left:9px;right:auto;width:4px;height:auto}.stop::after{top:2px}
-  .stop i{color:var(--ink);font-size:56px}.stop::after{border-color:var(--ink);background:var(--amber)}
-  .fill,.car{display:none}
+  .stop i{font-size:56px}
+  .track{position:relative}
+  .fill{top:0;left:calc(var(--gut) + 9px);width:4px;height:0;z-index:1}
+  .stop::after{z-index:1}
+  .car{left:calc(var(--gut) + 11px);top:0;margin:-1px 0 0 -24px;transform:rotate(90deg)}
 }
+@media(prefers-reduced-motion:reduce){.stop i{color:var(--ink)}.stop::after{border-color:var(--ink);background:var(--amber)}.fill,.car{display:none}}
 
 /* цена */
 .cost{display:grid;gap:40px}
@@ -832,6 +836,7 @@ function measure(){
   pinned=innerWidth>=900&&!calm;
   if(pinned){dist=Math.max(0,track.scrollWidth-innerWidth);route.style.height=(innerHeight-68+dist)+'px'}
   else route.style.height='';
+  fill.style.cssText='';car.style.cssText='';
   onScroll();
 }
 function onScroll(){
@@ -843,6 +848,11 @@ function onScroll(){
     const gut=parseFloat(getComputedStyle(track).paddingLeft),last=stops[stops.length-1].offsetLeft,x=gut+p*(last-gut);
     fill.style.left=gut+'px';fill.style.width=(x-gut)+'px';car.style.left=x+'px';
     stops.forEach(s=>s.classList.toggle('on',s.offsetLeft<=x+2));
+  }
+  else if(!calm){
+    const r=track.getBoundingClientRect(),last=stops[stops.length-1].offsetTop,y=Math.min(last,Math.max(0,innerHeight*.55-r.top));
+    fill.style.height=(y+13)+'px';car.style.top=y+'px';
+    stops.forEach(s=>s.classList.toggle('on',s.offsetTop<=y+2));
   }
   if(!calm){const fr=motto.getBoundingClientRect();if(fr.top<innerHeight)motto.style.transform=`translateX(${-(innerHeight-fr.top)*.35}px)`}
 }
