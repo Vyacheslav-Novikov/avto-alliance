@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vyacheslav-novikov.github.io/avto-alliance/sitemap.xml
