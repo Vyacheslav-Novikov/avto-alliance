@@ -362,8 +362,23 @@ dialog{border:0;padding:0;margin:auto;width:min(880px,calc(100% - 24px));max-hei
 dialog::backdrop{background:rgba(10,41,48,.72);backdrop-filter:blur(4px)}
 dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes pop{from{transform:translateY(28px) scale(.97);opacity:0}}
-.dl-ph{display:none;gap:4px;grid-template-columns:2fr 1fr 1fr;background:var(--ink)}
-.dl-ph.pic{display:grid}.dl-ph img{width:100%;height:240px;object-fit:cover}
+.gal{display:none;position:relative;background:var(--ink)}
+.gal.pic{display:block}
+.gal-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-track img{flex:0 0 100%;width:100%;aspect-ratio:16/10;max-height:min(58vh,520px);object-fit:cover;scroll-snap-align:center;scroll-snap-stop:always;user-select:none;-webkit-user-drag:none}
+.gal-nav{position:absolute;top:50%;width:52px;height:52px;margin-top:-26px;border:0;border-radius:50%;background:color-mix(in srgb,var(--sheet) 92%,transparent);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px -10px rgba(0,0,0,.6);transition:opacity .2s,transform .2s}
+.gal-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.gal-nav.prev{left:14px}.gal-nav.next{right:14px}
+.gal-nav:disabled{opacity:0;pointer-events:none}
+.gal-nav:active{transform:scale(.94)}
+.gal-n{position:absolute;left:14px;bottom:14px;padding:5px 11px;border-radius:999px;background:rgba(14,27,32,.72);color:#fff;font-size:13px;font-weight:600}
+.gal-thumbs{display:flex;gap:6px;padding:8px;overflow-x:auto;background:var(--ink);scrollbar-width:none}
+.gal-thumbs button{flex:0 0 72px;height:52px;padding:0;border:2px solid transparent;border-radius:3px;overflow:hidden;cursor:pointer;opacity:.55;background:none;transition:opacity .2s,border-color .2s}
+.gal-thumbs button[aria-current=true]{opacity:1;border-color:var(--amber)}
+.gal-thumbs img{width:100%;height:100%;object-fit:cover}
+@media(hover:hover){.gal-nav:hover{background:var(--amber)}.gal-thumbs button:hover{opacity:1}}
+@media(max-width:700px){.gal-nav{width:44px;height:44px;margin-top:-22px}.gal-thumbs{display:none}}
 .dl-in{padding:clamp(20px,3vw,40px);display:grid;gap:22px}
 .dl-top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--muted);padding-right:48px}
 .dl-top .oval{color:var(--ink)}
@@ -856,20 +871,38 @@ function openLot(id){
   const l=byId(id),c=C[l.c];
   const msg=`Здравствуйте! Интересует ${l.t} ${l.y} года за ${rub(l.p)} (лот ${l.id} с сайта).`;
   dlg.innerHTML=`<button class="x" aria-label="Закрыть">×</button>
-  <div class="dl-sil">${SIL[l.b]}</div>${l.ph?`<div class="dl-ph">${Array.from({length:l.ph},(_,i)=>`<img alt="${l.t}, фото ${i+1}" src="img/lots/${l.id}-${i+1}.jpg">`).join('')}</div>`:''}
+  <div class="dl-sil">${SIL[l.b]}</div>${l.ph?`<div class="gal" role="region" aria-roledescription="галерея" aria-label="Фото ${l.t}"><div class="gal-track" tabindex="0">${Array.from({length:l.ph},(_,i)=>`<img alt="${l.t}, фото ${i+1}" src="img/lots/${l.id}-${i+1}.jpg" draggable="false">`).join('')}</div><button type="button" class="gal-nav prev" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="gal-nav next" aria-label="Следующее фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><span class="gal-n num" aria-live="polite"></span></div><div class="gal-thumbs"></div>`:''}
   <div class="dl-in"><div class="dl-top"><span class="oval">${c.o}</span>${c.n} · ${l.rhd?'правый руль':'левый руль'} · лот ${l.id}</div>
   <h2 id="dlgTitle">${l.t}</h2><p>${l.d}</p>
   <div class="dl-spec"><div>Год выпуска<b>${l.y}</b></div><div>Пробег<b>${km(l.km)}</b></div><div>Двигатель<b>${l.eng}</b></div><div>Мощность<b>${l.hp} л.с.</b></div><div>Коробка<b>${l.tr}</b></div><div>Привод<b>${l.dr}</b></div>${l.auc?`<div>Аукцион<b>${l.auc}</b></div><div>Оценка<b>${l.g}</b></div>`:''}<div>Утильсбор<b>${l.hp<=160?'льготный, до 160 л.с.':'полная ставка, в цене'}</b></div></div>
   ${l.note?`<div class="honest"><b>Честно о нюансе</b>${l.note}</div>`:''}
   <div class="dl-buy"><div><span class="price num">${rub(l.p)}</span><small>под ключ в Санкт-Петербурге${l.here?'':', привезём такой же под заказ'}</small></div>
   <div class="dl-act"><a class="btn" href="${tg(msg)}" target="_blank" rel="noopener">Заказать в Telegram</a><a class="btn ghost" href="https://t.me/autospetersburg/${l.id}" target="_blank" rel="noopener">Фото в канале</a></div></div></div>`;
-  const ph=dlg.querySelector('.dl-ph');
-  if(ph){const done=()=>{if(ph.classList.contains('pic'))return;if([...ph.querySelectorAll('img')].every(i=>i.complete&&i.naturalWidth)){ph.classList.add('pic');const sl=dlg.querySelector('.dl-sil');if(sl)sl.remove()}};
-    ph.querySelectorAll('img').forEach(im=>{im.onload=done;im.onerror=()=>{im.remove();done()}});done()}
+  gallery(dlg);
   dlg.querySelector('.x').onclick=()=>dlg.close();
   dlg.showModal();dlg.scrollTop=0;
 }
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+
+/* ---------- галерея в окне лота ---------- */
+function gallery(root){
+  root.onkeydown=null;const g=root.querySelector('.gal');if(!g)return;
+  const tr=g.querySelector('.gal-track'),th=root.querySelector('.gal-thumbs'),n=g.querySelector('.gal-n'),pv=g.querySelector('.prev'),nx=g.querySelector('.next');
+  let imgs=[];
+  const idx=()=>Math.round(tr.scrollLeft/Math.max(1,tr.clientWidth));
+  const go=i=>{i=Math.max(0,Math.min(imgs.length-1,i));tr.scrollTo({left:i*tr.clientWidth,behavior:calm?'auto':'smooth'})};
+  const sync=()=>{const i=idx();n.textContent=`${i+1} / ${imgs.length}`;pv.disabled=i<=0;nx.disabled=i>=imgs.length-1;
+    th.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-current',j===i))};
+  const build=()=>{imgs=[...tr.querySelectorAll('img')].filter(i=>i.complete&&i.naturalWidth);
+    if(!imgs.length)return;g.classList.add('pic');const sl=root.querySelector('.dl-sil');if(sl)sl.remove();
+    const one=imgs.length<2;pv.hidden=nx.hidden=n.hidden=one;th.hidden=one;
+    th.innerHTML=imgs.map((im,j)=>`<button type="button" aria-label="Фото ${j+1}"><img src="${im.getAttribute('src')}" alt=""></button>`).join('');
+    th.querySelectorAll('button').forEach((b,j)=>b.onclick=()=>go(j));sync()};
+  tr.querySelectorAll('img').forEach(im=>{im.onload=build;im.onerror=()=>{im.remove();build()}});build();
+  pv.onclick=()=>go(idx()-1);nx.onclick=()=>go(idx()+1);
+  let t;tr.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(sync)},{passive:true});
+  root.onkeydown=e=>{if(!g.classList.contains('pic')||e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'){e.preventDefault();go(idx()+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(idx()-1)}};
+}
 
 /* ---------- страны ---------- */
 const gl=$('#geoList'),gp=$('#geoPanel');
