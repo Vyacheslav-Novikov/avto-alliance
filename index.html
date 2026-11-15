@@ -61,11 +61,11 @@ h3{font-size:clamp(28px,3vw,40px)}
 
 /* кнопки */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:4px;border:2px solid var(--ink);background:var(--ink);color:var(--sheet);font-weight:600;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s}
-.btn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+
 .btn.amber{background:var(--amber);border-color:var(--amber);color:var(--ink)}
-.btn.amber:hover{background:var(--sheet);border-color:var(--sheet)}
+
 .oval{display:inline-grid;place-items:center;min-width:46px;height:28px;padding:0 9px;border:2px solid currentColor;border-radius:50%;font:800 17px/1 var(--display);letter-spacing:.04em}
 
 /* шапка */
@@ -145,6 +145,19 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .lot .ph{display:none;aspect-ratio:4/3;overflow:hidden;background:var(--line)}
 .lot .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .lot.pic .ph{display:block}.lot:hover .ph img{transform:scale(1.05)}
+@media(hover:hover){.btn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}.btn.ghost:hover{background:var(--ink);color:var(--sheet);border-color:var(--ink)}.btn.amber:hover{background:var(--sheet);border-color:var(--sheet)}.band .btn:hover{background:var(--sheet);border-color:var(--sheet)}.qz-opt:hover{border-color:var(--ink)}}
+/* силуэт кузова */
+.sil{position:relative;display:grid;place-items:center;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 18px 10px;overflow:hidden}
+.lot.pic .sil{display:none}
+.sil span{position:absolute;left:14px;top:10px;font-size:12px;color:var(--muted)}
+.sil-svg{width:min(100%,230px);fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;overflow:visible}
+.sil-svg .b{fill:var(--sheet)}.sil-svg .win{fill:#D7DFDC}.sil-svg .hub{fill:var(--amber)}.sil-svg .w circle:first-child{fill:var(--sheet)}.sil-svg .g{stroke:var(--line)}
+.sil-svg .w{transform-box:fill-box;transform-origin:center}
+.sil-svg>:not(.g){transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover){.lot:hover .sil-svg>:not(.g):not(.w){transform:translateX(10px)}.lot:hover .sil-svg .w{animation:roll .5s cubic-bezier(.2,.8,.2,1) both}}
+@keyframes roll{to{transform:translateX(10px) rotate(240deg)}}
+.dl-sil{background:var(--paper);display:grid;place-items:center;padding:28px 20px 14px;border-bottom:1px solid var(--line)}
+.dl-sil .sil-svg{width:min(100%,420px)}
 .lot-in{display:flex;flex-direction:column;gap:14px;padding:18px 18px 16px;flex:1}
 .lot-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
 .lot-meta .oval{color:var(--ink)}
@@ -167,7 +180,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .empty a{font-weight:600}
 .band{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:28px;padding:24px clamp(18px,3vw,36px);background:var(--amber);border-radius:4px}
 .band p{font-weight:600;font-size:clamp(17px,1.5vw,21px);max-width:44ch}
-.band .btn:hover{background:var(--sheet);border-color:var(--sheet)}
+
 .about{display:grid;gap:24px;margin-top:clamp(56px,7vw,100px)}
 .about h2{font-size:clamp(38px,4.6vw,68px)}
 .about p{color:var(--muted);max-width:68ch}.about p+p{margin-top:14px}
@@ -190,6 +203,8 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .geo-panel p{max-width:58ch}
 .geo-panel dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:15px}
 .geo-panel dt{color:#8FAAAB}
+.geo-link{justify-self:start;color:var(--amber);font-weight:600;text-underline-offset:4px}
+.crumbs{font-size:14px;color:var(--muted);padding-top:22px}.crumbs a{color:var(--ink)}
 .geo-ex{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);font-size:15px}
 .geo-ex button{background:none;border:0;color:var(--amber);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:0;text-align:left}
 
@@ -305,6 +320,42 @@ footer{background:var(--petrol-deep);color:#A9C0BF;font-size:14px;overflow:hidde
 .dock a:first-child{background:var(--sheet)}
 @media(min-width:1020px){.dock{display:none}.foot{padding-bottom:40px}}
 
+/* квиз */
+.qz{width:min(760px,calc(100% - 24px))}
+.qz-head{display:flex;align-items:center;gap:16px;padding:22px clamp(20px,3vw,40px) 0;padding-right:72px}
+.qz-n{font-size:14px;color:var(--muted);white-space:nowrap}
+.qz-bar{flex:1;height:6px;background:var(--paper);border-radius:3px;overflow:hidden}
+.qz-bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.qz-body{padding:20px clamp(20px,3vw,40px) clamp(22px,3vw,36px);display:grid;gap:20px}
+.qz-body.in{animation:qin .35s cubic-bezier(.2,.8,.2,1)}
+.qz-body.back{animation:qback .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes qin{from{opacity:0;transform:translateX(28px)}}
+@keyframes qback{from{opacity:0;transform:translateX(-28px)}}
+.qz-body h2{font-size:clamp(40px,5.4vw,64px)}
+.qz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px}
+.qz-opt{display:grid;gap:4px;min-height:64px;padding:14px 16px;border:1.5px solid var(--line);border-radius:4px;background:var(--sheet);text-align:left;cursor:pointer;font-weight:600;transition:border-color .15s,background .15s,transform .15s}
+.qz-opt small{font-weight:400;font-size:13px;color:var(--muted)}
+
+.qz-opt:active{transform:scale(.98)}
+.qz-opt[aria-pressed=true]{border-color:var(--ink);background:var(--amber)}
+.qz-opt[aria-pressed=true] small{color:var(--ink)}
+.qz-opt .sil-svg{width:100%;max-width:150px;margin-bottom:4px}
+.qz-back{justify-self:start;background:none;border:0;padding:6px 0;color:var(--muted);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.qz-match{display:grid;border-top:2px solid var(--ink)}
+.qz-match button{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer}
+.qz-match button:hover em{color:var(--muted)}
+.qz-match em{font:800 24px/1 var(--display);font-style:normal;text-transform:uppercase}
+.qz-match span{font-size:13px;color:var(--muted);display:block;margin-top:3px}
+.qz-match b{font:900 26px/1 var(--display);white-space:nowrap}
+.qz-sum{font-size:15px;color:var(--muted)}
+.qz-f{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.qz-f label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.qz-f input{min-height:52px;padding:12px 14px;border:1.5px solid var(--line);border-radius:4px;background:var(--sheet);font-size:16px}
+.qz-f input:focus{border-color:var(--ink);outline:none}
+.qz-f .full{grid-column:1/-1}
+.qz-done{display:flex;flex-wrap:wrap;gap:10px}
+.qz-done .btn{flex:1 1 240px}
+@media(max-width:700px){.qz{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-radius:14px 14px 0 0}.qz-f{grid-template-columns:1fr}.qz-opts{grid-template-columns:1fr 1fr}.qz-opt{min-height:58px;padding:12px}}
 /* окно лота */
 dialog{border:0;padding:0;margin:auto;width:min(880px,calc(100% - 24px));max-height:calc(100dvh - 24px);border-radius:6px;background:var(--sheet);color:var(--ink);overflow:auto}
 dialog::backdrop{background:rgba(10,41,48,.72);backdrop-filter:blur(4px)}
@@ -374,11 +425,11 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
       <a href="#faq">Вопросы</a>
     </nav>
     <a class="tel num" href="tel:+79952306244">+7 995 230-62-44</a>
-    <a class="btn" href="#order">Заказать авто</a>
+    <a class="btn" href="#order" data-quiz>Подобрать авто</a>
     <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
   </div>
   <nav class="mnav" id="mnav" aria-label="Разделы" hidden>
-    <a href="#catalog">Каталог</a><a href="#countries">Страны</a><a href="#route">Как работаем</a><a href="#cost">Цена</a><a href="#faq">Вопросы</a><a href="#order">Заказать авто</a>
+    <a href="#catalog">Каталог</a><a href="#countries">Страны</a><a href="#route">Как работаем</a><a href="#cost">Цена</a><a href="#faq">Вопросы</a><a href="#order" data-quiz>Подобрать авто</a>
   </nav>
   <div class="prog" id="prog"></div>
 </header>
@@ -390,10 +441,10 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
     <div>
       <p class="big" aria-hidden="true"><span><b>Найдём</b></span><span><b>проверим</b></span><span><b>привезём</b></span></p>
       <h1>Автомобили из Японии, Кореи, Китая, Европы и США под заказ в&nbsp;Санкт-Петербурге</h1>
-      <p class="lead">Найдём, проверим и привезём под ключ: с растаможкой, утильсбором и&nbsp;доставкой. Напрямую, без пробега по&nbsp;России. Цены от&nbsp;860&nbsp;000&nbsp;₽.</p>
+      <p class="lead">Цена под ключ уже включает растаможку, утильсбор и&nbsp;доставку до&nbsp;Санкт-Петербурга, доплат на&nbsp;таможне нет. Отчёты о&nbsp;состоянии машины присылаем до&nbsp;предоплаты. Цены от&nbsp;860&nbsp;000&nbsp;₽.</p>
       <div class="cta">
-        <a class="btn" href="#order">Подобрать автомобиль</a>
-        <a class="btn ghost" href="#catalog">Смотреть лоты</a>
+        <a class="btn" href="#order" data-quiz>Подобрать авто за 1 минуту</a>
+        <a class="btn ghost" href="#catalog">Смотреть автомобили</a>
       </div>
     </div>
     <aside class="board" aria-label="Автомобили, которые можно заказать сейчас">
@@ -403,10 +454,10 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
     </aside>
   </div>
   <div class="facts">
-    <div><strong>С 2003 года</strong>продаём и подбираем автомобили</div>
-    <div><strong>5 направлений</strong>Япония, Корея, Китай, Европа, США</div>
+    <div><strong>С 2003 года</strong>подбираем и продаём автомобили</div>
+    <div><strong>Без доплат</strong>растаможка и утильсбор уже в цене</div>
+    <div><strong>Отчёты заранее</strong>аукционный лист, Encar, CarHistory до предоплаты</div>
     <div><strong>25+ банков</strong>для покупки в кредит</div>
-    <div><strong>10:00–18:00</strong>на связи каждый день, без выходных</div>
   </div>
 </section>
 
@@ -429,93 +480,93 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
     </label>
     <span class="found" id="found" aria-live="polite"></span>
   </div>
-  <div class="lots" id="lots"><!--s:lots--><button class="lot" type="button" style="view-transition-name: lot1999;">
+  <div class="lots" id="lots"><!--s:lots--><button class="lot" type="button" style="view-transition-name: lot1999;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M20,70 L20,24 L28,14 L160,14 L196,36 L218,40 L222,50 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z"></path><path class="win" d="M28,35 L32,20 L156,20 L182,35 Z"></path><path d="M72,35 V21"></path><path d="M116,35 V21"></path><path d="M148,35 V21"></path><g class="w"><circle cx="58" cy="70" r="13"></circle><circle class="hub" cx="58" cy="70" r="5"></circle><path d="M58,57 V65 M58,75 V83"></path></g><g class="w"><circle cx="182" cy="70" r="13"></circle><circle class="hub" cx="182" cy="70" r="5"></circle><path d="M182,57 V65 M182,75 V83"></path></g></svg><span>Минивэн</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Tank G</h3><p>Расход 4,6 л/100 км</p>
   <div class="spec"><div>Год<b>2017</b></div><div>Пробег<b>144&nbsp;000 км</b></div><div>Двигатель<b>1.0 бензин, 69 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">860&nbsp;000 ₽</span><span class="status here">Во Владивостоке</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1991;">
+  <div class="lot-foot"><span class="price num">860&nbsp;000 ₽</span><span class="status here">Во Владивостоке</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1991;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M46,70 L46,18 L52,12 L176,12 L184,20 L190,42 L196,50 L196,70 L185,70 A17 17 0 0 0 151,70 L93,70 A17 17 0 0 0 59,70 Z"></path><path class="win" d="M54,33 L54,20 L172,20 L180,33 Z"></path><path d="M98,33 V21"></path><path d="M140,33 V21"></path><g class="w"><circle cx="76" cy="70" r="13"></circle><circle class="hub" cx="76" cy="70" r="5"></circle><path d="M76,57 V65 M76,75 V83"></path></g><g class="w"><circle cx="168" cy="70" r="13"></circle><circle class="hub" cx="168" cy="70" r="5"></circle><path d="M168,57 V65 M168,75 V83"></path></g></svg><span>Кей-кар</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Suzuki Every PZ Turbo</h3><p>Высокая крыша H/R</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>14&nbsp;000 км</b></div><div>Двигатель<b>0.66 турбо, 64 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;237&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1984;">
+  <div class="lot-foot"><span class="price num">1&nbsp;237&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1984;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">ROK</span>Корея · левый руль</div>
   <h3>Mercedes-Benz GLC 300 Coupe</h3><p>Encar: без ДТП и окрасов</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>14&nbsp;741 км</b></div><div>Двигатель<b>2.0 турбо, гибрид 48V, 258 л.с.</b></div><div>Привод<b>Полный 4MATIC</b></div></div>
-  <div class="lot-foot"><span class="price num">7&nbsp;990&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1979;">
+  <div class="lot-foot"><span class="price num">7&nbsp;990&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1979;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M20,70 L20,54 L30,48 L70,45 L94,28 L150,27 L172,44 L214,48 L222,56 L222,70 L197,70 A17 17 0 0 0 163,70 L77,70 A17 17 0 0 0 43,70 Z"></path><path class="win" d="M78,44 L97,31 L147,31 L164,44 Z"></path><path d="M122,44 V32"></path><g class="w"><circle cx="60" cy="70" r="13"></circle><circle class="hub" cx="60" cy="70" r="5"></circle><path d="M60,57 V65 M60,75 V83"></path></g><g class="w"><circle cx="180" cy="70" r="13"></circle><circle class="hub" cx="180" cy="70" r="5"></circle><path d="M180,57 V65 M180,75 V83"></path></g></svg><span>Седан</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">ROK</span>Корея · левый руль</div>
   <h3>Kia K3 Prestige</h3><p>Диагностика Encar</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>34&nbsp;325 км</b></div><div>Двигатель<b>1.6 MPI, 123 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;842&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1970;">
+  <div class="lot-foot"><span class="price num">1&nbsp;842&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1970;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M20,70 L20,54 L30,48 L70,45 L94,28 L150,27 L172,44 L214,48 L222,56 L222,70 L197,70 A17 17 0 0 0 163,70 L77,70 A17 17 0 0 0 43,70 Z"></path><path class="win" d="M78,44 L97,31 L147,31 L164,44 Z"></path><path d="M122,44 V32"></path><g class="w"><circle cx="60" cy="70" r="13"></circle><circle class="hub" cx="60" cy="70" r="5"></circle><path d="M60,57 V65 M60,75 V83"></path></g><g class="w"><circle cx="180" cy="70" r="13"></circle><circle class="hub" cx="180" cy="70" r="5"></circle><path d="M180,57 V65 M180,75 V83"></path></g></svg><span>Седан</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Volkswagen Passat 280TSI</h3><p>Комплектация Comfort</p>
   <div class="spec"><div>Год<b>2020</b></div><div>Пробег<b>52&nbsp;000 км</b></div><div>Двигатель<b>1.4 TSI турбо, 150 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;826&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1963;">
+  <div class="lot-foot"><span class="price num">1&nbsp;826&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1963;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M46,70 L46,18 L52,12 L176,12 L184,20 L190,42 L196,50 L196,70 L185,70 A17 17 0 0 0 151,70 L93,70 A17 17 0 0 0 59,70 Z"></path><path class="win" d="M54,33 L54,20 L172,20 L180,33 Z"></path><path d="M98,33 V21"></path><path d="M140,33 V21"></path><g class="w"><circle cx="76" cy="70" r="13"></circle><circle class="hub" cx="76" cy="70" r="5"></circle><path d="M76,57 V65 M76,75 V83"></path></g><g class="w"><circle cx="168" cy="70" r="13"></circle><circle class="hub" cx="168" cy="70" r="5"></circle><path d="M168,57 V65 M168,75 V83"></path></g></svg><span>Кей-кар</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Daihatsu Hijet Cargo</h3><p>Комплектация Deluxe</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>8&nbsp;000 км</b></div><div>Двигатель<b>0.66 бензин, 46 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">928&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1951;">
+  <div class="lot-foot"><span class="price num">928&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1951;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M20,70 L20,24 L28,14 L160,14 L196,36 L218,40 L222,50 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z"></path><path class="win" d="M28,35 L32,20 L156,20 L182,35 Z"></path><path d="M72,35 V21"></path><path d="M116,35 V21"></path><path d="M148,35 V21"></path><g class="w"><circle cx="58" cy="70" r="13"></circle><circle class="hub" cx="58" cy="70" r="5"></circle><path d="M58,57 V65 M58,75 V83"></path></g><g class="w"><circle cx="182" cy="70" r="13"></circle><circle class="hub" cx="182" cy="70" r="5"></circle><path d="M182,57 V65 M182,75 V83"></path></g></svg><span>Минивэн</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Honda Freed Spike</h3><p>G Just Selection</p>
   <div class="spec"><div>Год<b>2015</b></div><div>Пробег<b>71&nbsp;000 км</b></div><div>Двигатель<b>1.5 бензин, 118 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;187&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1941;">
+  <div class="lot-foot"><span class="price num">1&nbsp;187&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1941;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Citroen C3 Aircross</h3><p>Правый руль</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>56&nbsp;000 км</b></div><div>Двигатель<b>1.2 турбо, 110 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;091&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1933;">
+  <div class="lot-foot"><span class="price num">1&nbsp;091&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1933;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Audi Q2L 35 TFSI</h3><p>Fashion Dynamic Edition</p>
   <div class="spec"><div>Год<b>2024</b></div><div>Пробег<b>12&nbsp;000 км</b></div><div>Двигатель<b>1.5 TFSI турбо, 160 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;558&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1908;">
+  <div class="lot-foot"><span class="price num">2&nbsp;558&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1908;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Mazda CX-5 2.0</h3><p>Smart Edition</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>43&nbsp;000 км</b></div><div>Двигатель<b>2.0 бензин, 155 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;359&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1899;">
+  <div class="lot-foot"><span class="price num">2&nbsp;359&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1899;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>BMW X1 sDrive20Li</h3><p>Удлинённая база</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>60&nbsp;000 км</b></div><div>Двигатель<b>1.5 турбо, 140 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;963&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1880;">
+  <div class="lot-foot"><span class="price num">1&nbsp;963&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1880;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M26,70 L26,40 L36,30 L56,26 L140,26 L166,44 L206,48 L214,56 L214,70 L193,70 A17 17 0 0 0 159,70 L79,70 A17 17 0 0 0 45,70 Z"></path><path class="win" d="M38,42 L46,32 L60,30 L136,30 L156,44 Z"></path><path d="M76,42 V31"></path><path d="M112,42 V31"></path><g class="w"><circle cx="62" cy="70" r="13"></circle><circle class="hub" cx="62" cy="70" r="5"></circle><path d="M62,57 V65 M62,75 V83"></path></g><g class="w"><circle cx="176" cy="70" r="13"></circle><circle class="hub" cx="176" cy="70" r="5"></circle><path d="M176,57 V65 M176,75 V83"></path></g></svg><span>Хэтчбек</span></div>
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Audi A3 Sportback S Line</h3><p>Правый руль</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>19&nbsp;000 км</b></div><div>Двигатель<b>1.0 TFSI турбо, 110 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;348&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1845;">
+  <div class="lot-foot"><span class="price num">1&nbsp;348&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1845;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M26,70 L26,40 L36,30 L56,26 L140,26 L166,44 L206,48 L214,56 L214,70 L193,70 A17 17 0 0 0 159,70 L79,70 A17 17 0 0 0 45,70 Z"></path><path class="win" d="M38,42 L46,32 L60,30 L136,30 L156,44 Z"></path><path d="M76,42 V31"></path><path d="M112,42 V31"></path><g class="w"><circle cx="62" cy="70" r="13"></circle><circle class="hub" cx="62" cy="70" r="5"></circle><path d="M62,57 V65 M62,75 V83"></path></g><g class="w"><circle cx="176" cy="70" r="13"></circle><circle class="hub" cx="176" cy="70" r="5"></circle><path d="M176,57 V65 M176,75 V83"></path></g></svg><span>Хэтчбек</span></div>
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Volkswagen Golf 8 R-Line</h3><p>8,5 с до 100 км/ч</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>50&nbsp;000 км</b></div><div>Двигатель<b>1.4 TSI турбо, 150 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;957&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1829;">
+  <div class="lot-foot"><span class="price num">1&nbsp;957&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1829;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M18,70 L18,46 L24,30 L40,26 L146,26 L170,44 L214,48 L222,56 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z"></path><path class="win" d="M26,43 L30,32 L42,30 L142,30 L162,43 Z"></path><path d="M74,43 V31"></path><path d="M118,43 V31"></path><g class="w"><circle cx="58" cy="70" r="13"></circle><circle class="hub" cx="58" cy="70" r="5"></circle><path d="M58,57 V65 M58,75 V83"></path></g><g class="w"><circle cx="182" cy="70" r="13"></circle><circle class="hub" cx="182" cy="70" r="5"></circle><path d="M182,57 V65 M182,75 V83"></path></g></svg><span>Универсал</span></div>
   <span class="grade">оценка<b>4</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Corolla Fielder</h3><p>Универсал</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>97&nbsp;000 км</b></div><div>Двигатель<b>1.5 бензин, 103 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;461&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1810;">
+  <div class="lot-foot"><span class="price num">1&nbsp;461&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1810;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M24,70 L24,55 L36,49 L96,47 L140,47 L204,51 L216,58 L216,70 L197,70 A17 17 0 0 0 163,70 L79,70 A17 17 0 0 0 45,70 Z"></path><path class="win" d="M100,47 L118,34"></path><g class="w"><circle cx="62" cy="70" r="13"></circle><circle class="hub" cx="62" cy="70" r="5"></circle><path d="M62,57 V65 M62,75 V83"></path></g><g class="w"><circle cx="180" cy="70" r="13"></circle><circle class="hub" cx="180" cy="70" r="5"></circle><path d="M180,57 V65 M180,75 V83"></path></g></svg><span>Родстер</span></div>
   <span class="grade">оценка<b>4</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Mazda Roadster</h3><p>Кожаный салон</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>67&nbsp;000 км</b></div><div>Двигатель<b>1.5 SkyActiv-G, 132 л.с.</b></div><div>Привод<b>Задний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;911&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1651;">
+  <div class="lot-foot"><span class="price num">1&nbsp;911&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1651;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,83 H236"></path><path class="b" d="M20,70 L20,24 L28,14 L160,14 L196,36 L218,40 L222,50 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z"></path><path class="win" d="M28,35 L32,20 L156,20 L182,35 Z"></path><path d="M72,35 V21"></path><path d="M116,35 V21"></path><path d="M148,35 V21"></path><g class="w"><circle cx="58" cy="70" r="13"></circle><circle class="hub" cx="58" cy="70" r="5"></circle><path d="M58,57 V65 M58,75 V83"></path></g><g class="w"><circle cx="182" cy="70" r="13"></circle><circle class="hub" cx="182" cy="70" r="5"></circle><path d="M182,57 V65 M182,75 V83"></path></g></svg><span>Минивэн</span></div>
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Voxy Hybrid</h3><p>7 мест</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>84&nbsp;000 км</b></div><div>Двигатель<b>1.8 гибрид, 98 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;408&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1644;">
+  <div class="lot-foot"><span class="price num">2&nbsp;408&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1644;"><div class="sil"><svg class="sil-svg" viewBox="0 0 240 90" aria-hidden="true"><path class="g" d="M4,81 H236"></path><path class="b" d="M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z"></path><path class="win" d="M30,37 L36,28 L48,25 L142,25 L162,37 Z"></path><path d="M80,37 V26"></path><path d="M122,37 V26"></path><g class="w"><circle cx="62" cy="68" r="13"></circle><circle class="hub" cx="62" cy="68" r="5"></circle><path d="M62,55 V63 M62,73 V81"></path></g><g class="w"><circle cx="178" cy="68" r="13"></circle><circle class="hub" cx="178" cy="68" r="5"></circle><path d="M178,55 V63 M178,73 V81"></path></g></svg><span>Кроссовер</span></div>
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Raize G</h3><p>Длина 3995 мм</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>8&nbsp;000 км</b></div><div>Двигатель<b>1.2 бензин, 87 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;349&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><!--e:lots--></div>
-  <div class="band"><p>Нужной машины нет в списке? Привезём под заказ: назовите модель и бюджет, посчитаем цену под ключ.</p><a class="btn" href="#order">Подобрать автомобиль</a></div>
+  <div class="lot-foot"><span class="price num">1&nbsp;349&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Подробнее</span></div></div></button><!--e:lots--></div>
+  <div class="band"><p>Нужной машины нет в списке? Привезём под заказ: ответьте на 4 вопроса, и менеджер посчитает цену под ключ.</p><a class="btn" href="#order" data-quiz>Подобрать за 1 минуту</a></div>
 </section>
 
 <section class="block dark" id="countries">
@@ -526,7 +577,7 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
     </div>
     <div class="geo">
       <div class="geo-list" role="tablist" aria-label="Страны" id="geoList"><!--s:geoList--><button type="button" role="tab" aria-selected="true">Япония<span class="oval">J</span></button><button type="button" role="tab" aria-selected="false">Корея<span class="oval">ROK</span></button><button type="button" role="tab" aria-selected="false">Китай<span class="oval">CHN</span></button><button type="button" role="tab" aria-selected="false">Европа<span class="oval">EU</span></button><button type="button" role="tab" aria-selected="false">США<span class="oval">USA</span></button><!--e:geoList--></div>
-      <div class="geo-panel" role="tabpanel" id="geoPanel" aria-live="polite"><!--s:geoPanel--><p>Аукционы Японии: CAA, JU, AUCNET, TAA, ZIP и другие. Берём кей-кары, минивэны, гибриды и редкие для России модели. У каждой машины есть аукционный лист с оценкой состояния, по нему и выбираем.</p><dl><dt>Руль</dt><dd>правый</dd><dt>Проверка</dt><dd>аукционный лист, оценка 4 и 4.5</dd><dt>Что возим</dt><dd>Toyota, Honda, Suzuki, Daihatsu, Mazda</dd><dt>Срок</dt><dd>с аукциона 2–3 месяца</dd></dl>
+      <div class="geo-panel" role="tabpanel" id="geoPanel" aria-live="polite"><!--s:geoPanel--><p>Аукционы Японии: CAA, JU, AUCNET, TAA, ZIP и другие. Берём кей-кары, минивэны, гибриды и редкие для России модели. У каждой машины есть аукционный лист с оценкой состояния, по нему и выбираем.</p><a class="geo-link" href="yaponiya/">Все автомобили из Японии</a><dl><dt>Руль</dt><dd>правый</dd><dt>Проверка</dt><dd>аукционный лист, оценка 4 и 4.5</dd><dt>Что возим</dt><dd>Toyota, Honda, Suzuki, Daihatsu, Mazda</dd><dt>Срок</dt><dd>с аукциона 2–3 месяца</dd></dl>
   <div class="geo-ex"><span>Пример: Toyota Voxy Hybrid 2022, <b class="num">2&nbsp;408&nbsp;000 ₽</b> под ключ</span><button type="button" data-lot="1651">Открыть лот</button></div><!--e:geoPanel--></div>
     </div>
   </div>
@@ -657,7 +708,7 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 <section class="block dark" id="order">
   <div class="wrap ask">
     <div>
-      <h2>Опишите автомобиль мечты</h2>
+      <h2>Подберём автомобиль под ваш бюджет</h2>
       <p class="lead" style="margin-top:20px">Заполните пару полей. Мы соберём из них сообщение менеджеру, вам останется нажать «Отправить» в Telegram.</p>
       <div class="alt">Или позвоните, ежедневно с 10:00 до 18:00
         <a class="num" href="tel:+79952306244">+7 995 230-62-44</a>
@@ -685,6 +736,7 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
   <div class="wrap foot">
     <div><a class="logo" href="#top" style="color:#fff;margin-bottom:12px"><svg class="mark" viewBox="0 0 55.6 40" aria-hidden="true"><path d="M21.0,0.0L42.0,40.0L32.3,40.0L21.0,16.9L9.8,40.0L0.0,40.0Z" fill="#FFFFFF"/><path d="M21.0,29.2L26.7,40.0L15.3,40.0ZM35.3,0.0L55.6,40.0L46.5,40.0L30.2,9.2Z" fill="#FFB81C"/></svg>Авто Альянс</a>Чистые авто из Японии, Кореи, Китая, Европы и США. Работаем с 2003 года.</div>
     <div><h4>Связаться</h4><a class="num" href="tel:+79952306244">+7 995 230-62-44</a><a href="https://t.me/Aleks_ABTO" target="_blank" rel="noopener">Менеджер в Telegram</a><a href="https://clck.ru/3Td9au" target="_blank" rel="noopener">MAX</a>Ежедневно 10:00–18:00</div>
+    <div><h4>Направления</h4><a href="yaponiya/">Авто из Японии</a><a href="koreya/">Авто из Кореи</a><a href="kitay/">Авто из Китая</a></div>
     <div><h4>Мы в сети</h4><a href="https://t.me/autospetersburg" target="_blank" rel="noopener">Telegram-канал</a><a href="https://vk.com/auto_alliance_pro" target="_blank" rel="noopener">ВКонтакте</a><a href="https://www.youtube.com/@autoaliance" target="_blank" rel="noopener">YouTube</a></div>
     <div>Сайт носит информационный характер и не является публичной офертой. Цены указаны на дату публикации лота и зависят от курса валют.</div>
   </div>
@@ -695,6 +747,11 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
   <a href="https://t.me/Aleks_ABTO" target="_blank" rel="noopener">Написать в Telegram</a>
 </nav>
 
+<dialog id="quiz" class="qz" aria-labelledby="qzTitle">
+  <button class="x" type="button" aria-label="Закрыть">×</button>
+  <div class="qz-head"><span class="qz-n num" id="qzN"></span><div class="qz-bar"><i id="qzBar"></i></div></div>
+  <div class="qz-body" id="qzBody" aria-live="polite"></div>
+</dialog>
 <dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
 
 <script>
@@ -702,31 +759,35 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 const C={jp:{n:'Япония',o:'J',from:'из Японии'},kr:{n:'Корея',o:'ROK',from:'из Кореи'},cn:{n:'Китай',o:'CHN',from:'из Китая'},eu:{n:'Европа',o:'EU'},us:{n:'США',o:'USA'}};
 /* id = номер поста в канале. Фото: положите файлы img/lots/ID-1.jpg, ID-2.jpg, ID-3.jpg, они подхватятся сами. */
 const LOTS=[
- {id:1999,c:'jp',t:'Toyota Tank G',y:2017,hp:69,eng:'1.0 бензин',tr:'Вариатор',dr:'Полный 4WD',km:144000,p:860000,rhd:1,here:1,more:'Расход 4,6 л/100 км',d:'Высокий городской микровэн длиной 3,7 метра: сдвижные двери с двух сторон, высокий потолок, полный привод для зимы и дачной грунтовки.',note:'Автомобиль уже во Владивостоке, растаможен, документы готовы. Динамика скромная: это городской семейный вариант, а не трасса. Зато дешёвое ТО и простая конструкция без турбины.'},
- {id:1991,c:'jp',t:'Suzuki Every PZ Turbo',y:2021,hp:64,eng:'0.66 турбо',tr:'Вариатор',dr:'Полный 4WD',km:14000,p:1237000,rhd:1,more:'Высокая крыша H/R',d:'Японский кей-вэн в топовой турбо-версии с высокой крышей и сдвижными дверями с двух сторон. Салон-трансформер.',note:'Чтобы сохранить выгодную ставку пошлины, ввозить нужно до исполнения автомобилю 5 лет. Мы контролируем это по месяцу выпуска.'},
- {id:1984,c:'kr',t:'Mercedes-Benz GLC 300 Coupe',y:2023,hp:258,eng:'2.0 турбо, гибрид 48V',tr:'Автомат 9G-Tronic',dr:'Полный 4MATIC',km:14741,p:7990000,more:'Encar: без ДТП и окрасов',d:'Кроссовер-купе в кузове X254. Панорамный люк, коричневая кожа, подогрев и вентиляция сидений, навигация.',note:'Мощность 258 л.с. выше льготного лимита. Утильсбор оплачен по полной ставке и уже включён в цену, доплат на таможне нет.'},
- {id:1979,c:'kr',t:'Kia K3 Prestige',y:2022,hp:123,eng:'1.6 MPI',tr:'Вариатор IVT',dr:'Передний',km:34325,p:1842000,more:'Диагностика Encar',d:'Седан в богатой комплектации: кожа, подогрев и вентиляция передних сидений, камера, смарт-ключ, штатная навигация. Мотор с распределённым впрыском.',note:'Люка нет. Кому-то это даже плюс: меньше потенциальных проблем. Отчёт CarHistory пришлём до предоплаты.'},
- {id:1970,c:'cn',t:'Volkswagen Passat 280TSI',y:2020,hp:150,eng:'1.4 TSI турбо',tr:'Робот DSG-7',dr:'Передний',km:52000,p:1826000,more:'Комплектация Comfort',d:'Просторный бизнес-седан с левым рулём. Климат-контроль, камера заднего вида, круиз, LED-оптика.',note:'Сухой робот DSG-7 не любит пробки. Проверим его состояние до покупки. Мотор просит 95-й бензин.'},
- {id:1963,c:'jp',t:'Daihatsu Hijet Cargo',y:2023,hp:46,eng:'0.66 бензин',tr:'Вариатор',dr:'Полный 4WD',km:8000,p:928000,rhd:1,more:'Комплектация Deluxe',d:'Компактный кей-вэн для работы и города: практичный, надёжный и неожиданно проходимый.',note:'Это городской рабочий инструмент: узкий и шумноватый на трассе. Зато неубиваемый мотор, копеечный расход и полный привод.'},
- {id:1951,c:'jp',t:'Honda Freed Spike',y:2015,hp:118,eng:'1.5 бензин',tr:'Вариатор',dr:'Передний',km:71000,p:1187000,rhd:1,more:'G Just Selection',d:'Компактный минивэн с атмосферным мотором L15A и расходом около 6 л на 100 км.'},
- {id:1941,c:'jp',t:'Citroen C3 Aircross',y:2021,hp:110,eng:'1.2 турбо',tr:'Автомат Aisin, 6 ст.',dr:'Передний',km:56000,p:1091000,rhd:1,g:'4.5',auc:'KCAA Kyoto, лот 1058',more:'Правый руль',d:'Компактный кроссовер с запоминающимся дизайном и просторным салоном.'},
- {id:1933,c:'cn',t:'Audi Q2L 35 TFSI',y:2024,hp:160,eng:'1.5 TFSI турбо',tr:'Робот, 7 ст.',dr:'Передний',km:12000,p:2558000,more:'Fashion Dynamic Edition',d:'Компактный премиум-кроссовер. Ровно 160 сил, проходит по льготному утильсбору.'},
- {id:1908,c:'cn',t:'Mazda CX-5 2.0',y:2022,hp:155,eng:'2.0 бензин',tr:'Автомат, 6 ст.',dr:'Передний',km:43000,p:2359000,more:'Smart Edition',d:'Атмосферный мотор и классический автомат. Камера, большой экран, комплекс безопасности i-Activsense.'},
- {id:1899,c:'cn',t:'BMW X1 sDrive20Li',y:2022,hp:140,eng:'1.5 турбо',tr:'Робот, 7 ст.',dr:'Передний',km:60000,p:1963000,more:'Удлинённая база',d:'Удлинённая версия кроссовера: больше места для задних пассажиров.'},
- {id:1880,c:'jp',t:'Audi A3 Sportback S Line',y:2021,hp:110,eng:'1.0 TFSI турбо',tr:'Робот S tronic',dr:'Передний',km:19000,p:1348000,rhd:1,g:'4.5',auc:'ZIP Osaka, лот 312',more:'Правый руль',d:'Премиальный хэтчбек со спортивным обвесом S Line и пробегом 19 тысяч.'},
- {id:1845,c:'cn',t:'Volkswagen Golf 8 R-Line',y:2021,hp:150,eng:'1.4 TSI турбо',tr:'Робот DSG-7',dr:'Передний',km:50000,p:1957000,more:'8,5 с до 100 км/ч',d:'Golf восьмого поколения в комплектации R-Line с левым рулём.'},
- {id:1829,c:'jp',t:'Toyota Corolla Fielder',y:2021,hp:103,eng:'1.5 бензин',tr:'Вариатор',dr:'Полный 4WD',km:97000,p:1461000,rhd:1,g:'4',auc:'AUCNET, лот 11024',more:'Универсал',d:'Классический японский универсал с мотором 1NZ-FE и полным приводом.'},
- {id:1810,c:'jp',t:'Mazda Roadster',y:2021,hp:132,eng:'1.5 SkyActiv-G',tr:'Механика, 6 ст.',dr:'Задний',km:67000,p:1911000,rhd:1,g:'4',auc:'CAA Tokyo, лот 30483',more:'Кожаный салон',d:'Самый продаваемый родстер в истории: атмосферный мотор, механика и задний привод.'},
- {id:1651,c:'jp',t:'Toyota Voxy Hybrid',y:2022,hp:98,eng:'1.8 гибрид',tr:'E-CVT',dr:'Передний',km:84000,p:2408000,rhd:1,g:'4.5',auc:'CAA Chubu, лот 33155',more:'7 мест',d:'Семиместный минивэн с расходом около 4,2 л на 100 км и Toyota Safety Sense.'},
- {id:1644,c:'jp',t:'Toyota Raize G',y:2023,hp:87,eng:'1.2 бензин',tr:'Вариатор',dr:'Передний',km:8000,p:1349000,rhd:1,g:'4.5',auc:'CAA Chubu, лот 36411',more:'Длина 3995 мм',d:'Субкомпактный кроссовер для города с пробегом 8 тысяч километров.'}
+ {id:1999,c:'jp',b:'mpv',t:'Toyota Tank G',y:2017,hp:69,eng:'1.0 бензин',tr:'Вариатор',dr:'Полный 4WD',km:144000,p:860000,rhd:1,here:1,more:'Расход 4,6 л/100 км',d:'Высокий городской микровэн длиной 3,7 метра: сдвижные двери с двух сторон, высокий потолок, полный привод для зимы и дачной грунтовки.',note:'Автомобиль уже во Владивостоке, растаможен, документы готовы. Динамика скромная: это городской семейный вариант, а не трасса. Зато дешёвое ТО и простая конструкция без турбины.'},
+ {id:1991,c:'jp',b:'kei',t:'Suzuki Every PZ Turbo',y:2021,hp:64,eng:'0.66 турбо',tr:'Вариатор',dr:'Полный 4WD',km:14000,p:1237000,rhd:1,more:'Высокая крыша H/R',d:'Японский кей-вэн в топовой турбо-версии с высокой крышей и сдвижными дверями с двух сторон. Салон-трансформер.',note:'Чтобы сохранить выгодную ставку пошлины, ввозить нужно до исполнения автомобилю 5 лет. Мы контролируем это по месяцу выпуска.'},
+ {id:1984,c:'kr',b:'suv',t:'Mercedes-Benz GLC 300 Coupe',y:2023,hp:258,eng:'2.0 турбо, гибрид 48V',tr:'Автомат 9G-Tronic',dr:'Полный 4MATIC',km:14741,p:7990000,more:'Encar: без ДТП и окрасов',d:'Кроссовер-купе в кузове X254. Панорамный люк, коричневая кожа, подогрев и вентиляция сидений, навигация.',note:'Мощность 258 л.с. выше льготного лимита. Утильсбор оплачен по полной ставке и уже включён в цену, доплат на таможне нет.'},
+ {id:1979,c:'kr',b:'sedan',t:'Kia K3 Prestige',y:2022,hp:123,eng:'1.6 MPI',tr:'Вариатор IVT',dr:'Передний',km:34325,p:1842000,more:'Диагностика Encar',d:'Седан в богатой комплектации: кожа, подогрев и вентиляция передних сидений, камера, смарт-ключ, штатная навигация. Мотор с распределённым впрыском.',note:'Люка нет. Кому-то это даже плюс: меньше потенциальных проблем. Отчёт CarHistory пришлём до предоплаты.'},
+ {id:1970,c:'cn',b:'sedan',t:'Volkswagen Passat 280TSI',y:2020,hp:150,eng:'1.4 TSI турбо',tr:'Робот DSG-7',dr:'Передний',km:52000,p:1826000,more:'Комплектация Comfort',d:'Просторный бизнес-седан с левым рулём. Климат-контроль, камера заднего вида, круиз, LED-оптика.',note:'Сухой робот DSG-7 не любит пробки. Проверим его состояние до покупки. Мотор просит 95-й бензин.'},
+ {id:1963,c:'jp',b:'kei',t:'Daihatsu Hijet Cargo',y:2023,hp:46,eng:'0.66 бензин',tr:'Вариатор',dr:'Полный 4WD',km:8000,p:928000,rhd:1,more:'Комплектация Deluxe',d:'Компактный кей-вэн для работы и города: практичный, надёжный и неожиданно проходимый.',note:'Это городской рабочий инструмент: узкий и шумноватый на трассе. Зато неубиваемый мотор, копеечный расход и полный привод.'},
+ {id:1951,c:'jp',b:'mpv',t:'Honda Freed Spike',y:2015,hp:118,eng:'1.5 бензин',tr:'Вариатор',dr:'Передний',km:71000,p:1187000,rhd:1,more:'G Just Selection',d:'Компактный минивэн с атмосферным мотором L15A и расходом около 6 л на 100 км.'},
+ {id:1941,c:'jp',b:'suv',t:'Citroen C3 Aircross',y:2021,hp:110,eng:'1.2 турбо',tr:'Автомат Aisin, 6 ст.',dr:'Передний',km:56000,p:1091000,rhd:1,g:'4.5',auc:'KCAA Kyoto, лот 1058',more:'Правый руль',d:'Компактный кроссовер с запоминающимся дизайном и просторным салоном.'},
+ {id:1933,c:'cn',b:'suv',t:'Audi Q2L 35 TFSI',y:2024,hp:160,eng:'1.5 TFSI турбо',tr:'Робот, 7 ст.',dr:'Передний',km:12000,p:2558000,more:'Fashion Dynamic Edition',d:'Компактный премиум-кроссовер. Ровно 160 сил, проходит по льготному утильсбору.'},
+ {id:1908,c:'cn',b:'suv',t:'Mazda CX-5 2.0',y:2022,hp:155,eng:'2.0 бензин',tr:'Автомат, 6 ст.',dr:'Передний',km:43000,p:2359000,more:'Smart Edition',d:'Атмосферный мотор и классический автомат. Камера, большой экран, комплекс безопасности i-Activsense.'},
+ {id:1899,c:'cn',b:'suv',t:'BMW X1 sDrive20Li',y:2022,hp:140,eng:'1.5 турбо',tr:'Робот, 7 ст.',dr:'Передний',km:60000,p:1963000,more:'Удлинённая база',d:'Удлинённая версия кроссовера: больше места для задних пассажиров.'},
+ {id:1880,c:'jp',b:'hatch',t:'Audi A3 Sportback S Line',y:2021,hp:110,eng:'1.0 TFSI турбо',tr:'Робот S tronic',dr:'Передний',km:19000,p:1348000,rhd:1,g:'4.5',auc:'ZIP Osaka, лот 312',more:'Правый руль',d:'Премиальный хэтчбек со спортивным обвесом S Line и пробегом 19 тысяч.'},
+ {id:1845,c:'cn',b:'hatch',t:'Volkswagen Golf 8 R-Line',y:2021,hp:150,eng:'1.4 TSI турбо',tr:'Робот DSG-7',dr:'Передний',km:50000,p:1957000,more:'8,5 с до 100 км/ч',d:'Golf восьмого поколения в комплектации R-Line с левым рулём.'},
+ {id:1829,c:'jp',b:'wagon',t:'Toyota Corolla Fielder',y:2021,hp:103,eng:'1.5 бензин',tr:'Вариатор',dr:'Полный 4WD',km:97000,p:1461000,rhd:1,g:'4',auc:'AUCNET, лот 11024',more:'Универсал',d:'Классический японский универсал с мотором 1NZ-FE и полным приводом.'},
+ {id:1810,c:'jp',b:'roadster',t:'Mazda Roadster',y:2021,hp:132,eng:'1.5 SkyActiv-G',tr:'Механика, 6 ст.',dr:'Задний',km:67000,p:1911000,rhd:1,g:'4',auc:'CAA Tokyo, лот 30483',more:'Кожаный салон',d:'Самый продаваемый родстер в истории: атмосферный мотор, механика и задний привод.'},
+ {id:1651,c:'jp',b:'mpv',t:'Toyota Voxy Hybrid',y:2022,hp:98,eng:'1.8 гибрид',tr:'E-CVT',dr:'Передний',km:84000,p:2408000,rhd:1,g:'4.5',auc:'CAA Chubu, лот 33155',more:'7 мест',d:'Семиместный минивэн с расходом около 4,2 л на 100 км и Toyota Safety Sense.'},
+ {id:1644,c:'jp',b:'suv',t:'Toyota Raize G',y:2023,hp:87,eng:'1.2 бензин',tr:'Вариатор',dr:'Передний',km:8000,p:1349000,rhd:1,g:'4.5',auc:'CAA Chubu, лот 36411',more:'Длина 3995 мм',d:'Субкомпактный кроссовер для города с пробегом 8 тысяч километров.'}
 ];
 const GEO=[
- {k:'jp',lot:1651,t:'Аукционы Японии: CAA, JU, AUCNET, TAA, ZIP и другие. Берём кей-кары, минивэны, гибриды и редкие для России модели. У каждой машины есть аукционный лист с оценкой состояния, по нему и выбираем.',dl:[['Руль','правый'],['Проверка','аукционный лист, оценка 4 и 4.5'],['Что возим','Toyota, Honda, Suzuki, Daihatsu, Mazda'],['Срок','с аукциона 2–3 месяца']]},
- {k:'kr',lot:1979,t:'Корея даёт левый руль и богатые комплектации. Везём как автомобили с пробегом, так и новые. Каждую машину смотрим по диагностике Encar и заказываем отчёт страховой истории CarHistory.',dl:[['Руль','левый'],['Проверка','Encar, CarHistory, техосмотр Кореи'],['Что возим','Kia, Hyundai, Mercedes-Benz и другие'],['Состояние','новые и с пробегом']]},
- {k:'cn',lot:1908,t:'Из Китая везём знакомые европейские и японские марки местной сборки: немецкий характер по китайской цене. Свежие годы, небольшие пробеги, левый руль. Узлы с известными слабостями проверяем до покупки.',dl:[['Руль','левый'],['Проверка','состояние узлов до покупки'],['Что возим','Volkswagen, Audi, BMW, Mazda, Toyota, Honda'],['Мощность','много версий до 160 л.с.']]},
+ {k:'jp',url:'yaponiya/',lot:1651,t:'Аукционы Японии: CAA, JU, AUCNET, TAA, ZIP и другие. Берём кей-кары, минивэны, гибриды и редкие для России модели. У каждой машины есть аукционный лист с оценкой состояния, по нему и выбираем.',dl:[['Руль','правый'],['Проверка','аукционный лист, оценка 4 и 4.5'],['Что возим','Toyota, Honda, Suzuki, Daihatsu, Mazda'],['Срок','с аукциона 2–3 месяца']]},
+ {k:'kr',url:'koreya/',lot:1979,t:'Корея даёт левый руль и богатые комплектации. Везём как автомобили с пробегом, так и новые. Каждую машину смотрим по диагностике Encar и заказываем отчёт страховой истории CarHistory.',dl:[['Руль','левый'],['Проверка','Encar, CarHistory, техосмотр Кореи'],['Что возим','Kia, Hyundai, Mercedes-Benz и другие'],['Состояние','новые и с пробегом']]},
+ {k:'cn',url:'kitay/',lot:1908,t:'Из Китая везём знакомые европейские и японские марки местной сборки: немецкий характер по китайской цене. Свежие годы, небольшие пробеги, левый руль. Узлы с известными слабостями проверяем до покупки.',dl:[['Руль','левый'],['Проверка','состояние узлов до покупки'],['Что возим','Volkswagen, Audi, BMW, Mazda, Toyota, Honda'],['Мощность','много версий до 160 л.с.']]},
  {k:'eu',t:'Европейский рынок берём под конкретный запрос. Пришлите марку, модель, год и бюджет. Посчитаем цену под ключ и честно скажем, выгодно ли везти именно оттуда.',dl:[['Формат','подбор под заказ'],['Расчёт','бесплатно, на день запроса']]},
  {k:'us',t:'Автомобили из США подбираем под заказ. Напишите, какая машина нужна, и мы вернёмся с вариантами и ценой под ключ.',dl:[['Формат','подбор под заказ'],['Расчёт','бесплатно, на день запроса']]}
 ];
+
+/* ---------- силуэты кузовов (пока нет фото) ---------- */
+const SIL={"sedan": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M20,70 L20,54 L30,48 L70,45 L94,28 L150,27 L172,44 L214,48 L222,56 L222,70 L197,70 A17 17 0 0 0 163,70 L77,70 A17 17 0 0 0 43,70 Z\"/><path class=\"win\" d=\"M78,44 L97,31 L147,31 L164,44 Z\"/><path d=\"M122,44 V32\"/><g class=\"w\"><circle cx=\"60\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"60\" cy=\"70\" r=\"5\"/><path d=\"M60,57 V65 M60,75 V83\"/></g><g class=\"w\"><circle cx=\"180\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"180\" cy=\"70\" r=\"5\"/><path d=\"M180,57 V65 M180,75 V83\"/></g></svg>", "hatch": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M26,70 L26,40 L36,30 L56,26 L140,26 L166,44 L206,48 L214,56 L214,70 L193,70 A17 17 0 0 0 159,70 L79,70 A17 17 0 0 0 45,70 Z\"/><path class=\"win\" d=\"M38,42 L46,32 L60,30 L136,30 L156,44 Z\"/><path d=\"M76,42 V31\"/><path d=\"M112,42 V31\"/><g class=\"w\"><circle cx=\"62\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"62\" cy=\"70\" r=\"5\"/><path d=\"M62,57 V65 M62,75 V83\"/></g><g class=\"w\"><circle cx=\"176\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"176\" cy=\"70\" r=\"5\"/><path d=\"M176,57 V65 M176,75 V83\"/></g></svg>", "wagon": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M18,70 L18,46 L24,30 L40,26 L146,26 L170,44 L214,48 L222,56 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z\"/><path class=\"win\" d=\"M26,43 L30,32 L42,30 L142,30 L162,43 Z\"/><path d=\"M74,43 V31\"/><path d=\"M118,43 V31\"/><g class=\"w\"><circle cx=\"58\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"58\" cy=\"70\" r=\"5\"/><path d=\"M58,57 V65 M58,75 V83\"/></g><g class=\"w\"><circle cx=\"182\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"182\" cy=\"70\" r=\"5\"/><path d=\"M182,57 V65 M182,75 V83\"/></g></svg>", "suv": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,81 H236\"/><path class=\"b\" d=\"M22,68 L22,40 L30,26 L46,20 L146,20 L172,38 L212,42 L220,50 L220,68 L195,68 A17 17 0 0 0 161,68 L79,68 A17 17 0 0 0 45,68 Z\"/><path class=\"win\" d=\"M30,37 L36,28 L48,25 L142,25 L162,37 Z\"/><path d=\"M80,37 V26\"/><path d=\"M122,37 V26\"/><g class=\"w\"><circle cx=\"62\" cy=\"68\" r=\"13\"/><circle class=\"hub\" cx=\"62\" cy=\"68\" r=\"5\"/><path d=\"M62,55 V63 M62,73 V81\"/></g><g class=\"w\"><circle cx=\"178\" cy=\"68\" r=\"13\"/><circle class=\"hub\" cx=\"178\" cy=\"68\" r=\"5\"/><path d=\"M178,55 V63 M178,73 V81\"/></g></svg>", "mpv": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M20,70 L20,24 L28,14 L160,14 L196,36 L218,40 L222,50 L222,70 L199,70 A17 17 0 0 0 165,70 L75,70 A17 17 0 0 0 41,70 Z\"/><path class=\"win\" d=\"M28,35 L32,20 L156,20 L182,35 Z\"/><path d=\"M72,35 V21\"/><path d=\"M116,35 V21\"/><path d=\"M148,35 V21\"/><g class=\"w\"><circle cx=\"58\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"58\" cy=\"70\" r=\"5\"/><path d=\"M58,57 V65 M58,75 V83\"/></g><g class=\"w\"><circle cx=\"182\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"182\" cy=\"70\" r=\"5\"/><path d=\"M182,57 V65 M182,75 V83\"/></g></svg>", "kei": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M46,70 L46,18 L52,12 L176,12 L184,20 L190,42 L196,50 L196,70 L185,70 A17 17 0 0 0 151,70 L93,70 A17 17 0 0 0 59,70 Z\"/><path class=\"win\" d=\"M54,33 L54,20 L172,20 L180,33 Z\"/><path d=\"M98,33 V21\"/><path d=\"M140,33 V21\"/><g class=\"w\"><circle cx=\"76\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"76\" cy=\"70\" r=\"5\"/><path d=\"M76,57 V65 M76,75 V83\"/></g><g class=\"w\"><circle cx=\"168\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"168\" cy=\"70\" r=\"5\"/><path d=\"M168,57 V65 M168,75 V83\"/></g></svg>", "roadster": "<svg class=\"sil-svg\" viewBox=\"0 0 240 90\" aria-hidden=\"true\"><path class=\"g\" d=\"M4,83 H236\"/><path class=\"b\" d=\"M24,70 L24,55 L36,49 L96,47 L140,47 L204,51 L216,58 L216,70 L197,70 A17 17 0 0 0 163,70 L79,70 A17 17 0 0 0 45,70 Z\"/><path class=\"win\" d=\"M100,47 L118,34\"/><g class=\"w\"><circle cx=\"62\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"62\" cy=\"70\" r=\"5\"/><path d=\"M62,57 V65 M62,75 V83\"/></g><g class=\"w\"><circle cx=\"180\" cy=\"70\" r=\"13\"/><circle class=\"hub\" cx=\"180\" cy=\"70\" r=\"5\"/><path d=\"M180,57 V65 M180,75 V83\"/></g></svg>"};
+const BODYN={sedan:'Седан',hatch:'Хэтчбек',wagon:'Универсал',suv:'Кроссовер',mpv:'Минивэн',kei:'Кей-кар',roadster:'Родстер'};
 
 /* ---------- утилиты ---------- */
 const $=s=>document.querySelector(s), rub=n=>n.toLocaleString('ru-RU')+' ₽', km=n=>n.toLocaleString('ru-RU')+' км';
@@ -738,23 +799,24 @@ const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className
 
 /* ---------- табло ---------- */
 $('#board').replaceChildren();
-LOTS.slice(0,6).forEach(l=>{
+const PC=window.PAGE_C||'all',PLOTS=PC==='all'?LOTS:LOTS.filter(l=>l.c===PC);
+PLOTS.slice(0,6).forEach(l=>{
   const b=el('button','row',`<span class="oval">${C[l.c].o}</span><div><em>${l.t}</em><span class="${l.here?'here':''}">${l.y} · ${km(l.km)}${l.here?' · уже во Владивостоке':''}</span></div><b class="num">${rub(l.p)}</b>`);
   b.type='button';b.onclick=()=>openLot(l.id);$('#board').append(b);
 });
-$('#boardAll').textContent=`Все ${LOTS.length} лотов в каталоге`;
+{const n=PLOTS.length;$('#boardAll').textContent=`Все ${n} ${n%10===1&&n%100!==11?'автомобиль':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'автомобиля':'автомобилей')} в каталоге`;}
 
 /* ---------- каталог ---------- */
-let fc='all',showAll=false;const small=matchMedia('(max-width:700px)');
+let fc=PC,showAll=false;document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.c===fc));const small=matchMedia('(max-width:700px)');
 const budget=$('#budget'),lotsBox=$('#lots');
 function card(l){
   const b=el('button','lot'+(l.g?' graded':''));b.type='button';b.style.viewTransitionName='lot'+l.id;
-  b.innerHTML=`<div class="ph"><img loading="lazy" alt="${l.t}, ${l.y}" src="img/lots/${l.id}-1.jpg"></div>
+  b.innerHTML=`<div class="sil">${SIL[l.b]}<span>${BODYN[l.b]}</span></div><div class="ph"><img loading="lazy" alt="${l.t}, ${l.y}" src="img/lots/${l.id}-1.jpg"></div>
   ${l.g?`<span class="grade">оценка<b>${l.g}</b></span>`:''}
   <div class="lot-in"><div class="lot-meta"><span class="oval">${C[l.c].o}</span>${C[l.c].n} · ${l.rhd?'правый руль':'левый руль'}</div>
   <h3>${l.t}</h3><p>${l.more}</p>
   <div class="spec"><div>Год<b>${l.y}</b></div><div>Пробег<b>${km(l.km)}</b></div><div>Двигатель<b>${l.eng}, ${l.hp} л.с.</b></div><div>Привод<b>${l.dr}</b></div></div>
-  <div class="lot-foot"><span class="price num">${rub(l.p)}</span><span class="status ${l.here?'here':''}">${l.here?'Во Владивостоке':'Под заказ'}</span><span class="open" aria-hidden="true">Открыть лот</span></div></div>`;
+  <div class="lot-foot"><span class="price num">${rub(l.p)}</span><span class="status ${l.here?'here':''}">${l.here?'Во Владивостоке':'Под заказ'}</span><span class="open" aria-hidden="true">Подробнее</span></div></div>`;
   const im=b.querySelector('img');im.onload=()=>b.classList.add('pic');im.onerror=()=>im.remove();
   b.onclick=()=>openLot(l.id);return b;
 }
@@ -765,8 +827,8 @@ function draw(){
   const cut=small.matches&&!showAll&&list.length>6?list.slice(0,6):list;
   lotsBox.replaceChildren(...cut.map(card));
   if(cut.length<list.length){const m=el('button','btn ghost more','Показать ещё '+(list.length-cut.length));m.type='button';m.onclick=()=>{showAll=true;draw()};lotsBox.append(m)}
-  if(!list.length)lotsBox.append(el('div','empty',`В канале сейчас нет таких лотов. <a href="#order">Опишите, что нужно</a>, и мы подберём автомобиль под ваш бюджет.`));
-  const n=list.length,w=n%10===1&&n%100!==11?'лот':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'лота':'лотов');
+  if(!list.length)lotsBox.append(el('div','empty',`Сейчас в каталоге таких нет. <a href="#order" data-quiz>Ответьте на 4 вопроса</a>, и мы привезём автомобиль под заказ.`));
+  const n=list.length,w=n%10===1&&n%100!==11?'автомобиль':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'автомобиля':'автомобилей');
   $('#found').textContent=n?`${n} ${w}`:'';
 }
 $('#chips').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;fc=c.dataset.c;showAll=false;
@@ -779,7 +841,7 @@ function openLot(id){
   const l=byId(id),c=C[l.c];
   const msg=`Здравствуйте! Интересует ${l.t} ${l.y} года за ${rub(l.p)} (лот ${l.id} с сайта).`;
   dlg.innerHTML=`<button class="x" aria-label="Закрыть">×</button>
-  <div class="dl-ph">${[1,2,3].map(i=>`<img alt="${l.t}, фото ${i}" src="img/lots/${l.id}-${i}.jpg">`).join('')}</div>
+  <div class="dl-sil">${SIL[l.b]}</div><div class="dl-ph">${[1,2,3].map(i=>`<img alt="${l.t}, фото ${i}" src="img/lots/${l.id}-${i}.jpg">`).join('')}</div>
   <div class="dl-in"><div class="dl-top"><span class="oval">${c.o}</span>${c.n} · ${l.rhd?'правый руль':'левый руль'} · лот ${l.id}</div>
   <h2 id="dlgTitle">${l.t}</h2><p>${l.d}</p>
   <div class="dl-spec"><div>Год выпуска<b>${l.y}</b></div><div>Пробег<b>${km(l.km)}</b></div><div>Двигатель<b>${l.eng}</b></div><div>Мощность<b>${l.hp} л.с.</b></div><div>Коробка<b>${l.tr}</b></div><div>Привод<b>${l.dr}</b></div>${l.auc?`<div>Аукцион<b>${l.auc}</b></div><div>Оценка<b>${l.g}</b></div>`:''}<div>Утильсбор<b>${l.hp<=160?'льготный, до 160 л.с.':'полная ставка, в цене'}</b></div></div>
@@ -787,7 +849,7 @@ function openLot(id){
   <div class="dl-buy"><div><span class="price num">${rub(l.p)}</span><small>под ключ в Санкт-Петербурге${l.here?'':', привезём такой же под заказ'}</small></div>
   <div class="dl-act"><a class="btn" href="${tg(msg)}" target="_blank" rel="noopener">Заказать в Telegram</a><a class="btn ghost" href="https://t.me/autospetersburg/${l.id}" target="_blank" rel="noopener">Фото в канале</a></div></div></div>`;
   const ph=dlg.querySelector('.dl-ph');let ok=0;
-  ph.querySelectorAll('img').forEach(im=>{im.onload=()=>{if(++ok===3)ph.classList.add('pic')};im.onerror=()=>im.remove()});
+  ph.querySelectorAll('img').forEach(im=>{im.onload=()=>{if(++ok===3){ph.classList.add('pic');dlg.querySelector('.dl-sil').remove()}};im.onerror=()=>im.remove()});
   dlg.querySelector('.x').onclick=()=>dlg.close();
   dlg.showModal();dlg.scrollTop=0;
 }
@@ -798,14 +860,14 @@ const gl=$('#geoList'),gp=$('#geoPanel');
 function geo(i,anim){
   const g=GEO[i],c=C[g.k],l=g.lot&&byId(g.lot);
   [...gl.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
-  gp.innerHTML=`<p>${g.t}</p><dl>${g.dl.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>
+  gp.innerHTML=`<p>${g.t}</p>${g.url&&PC!==g.k?`<a class="geo-link" href="${window.ROOT||''}${g.url}">Все автомобили ${C[g.k].from}</a>`:''}<dl>${g.dl.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>
   <div class="geo-ex">${l?`<span>Пример: ${l.t} ${l.y}, <b class="num">${rub(l.p)}</b> под ключ</span><button type="button" data-lot="${l.id}">Открыть лот</button>`:`<span>Расчёт под ваш запрос</span><a class="btn amber" href="${tg('Здравствуйте! Хочу подобрать автомобиль, направление: '+c.n+'.')}" target="_blank" rel="noopener">Спросить менеджера</a>`}</div>`;
   if(anim&&!calm){gp.classList.remove('swap');void gp.offsetWidth;gp.classList.add('swap')}
 }
 gl.replaceChildren();
 GEO.forEach((g,i)=>{const b=el('button','',`${C[g.k].n}<span class="oval">${C[g.k].o}</span>`);b.type='button';b.role='tab';b.onclick=()=>geo(i,1);gl.append(b)});
 gp.onclick=e=>{const b=e.target.closest('[data-lot]');if(b)openLot(+b.dataset.lot)};
-geo(0);
+geo(Math.max(0,GEO.findIndex(g=>g.k===PC)));
 
 /* ---------- 160 л.с. ---------- */
 const hp=$('#hp');
@@ -860,6 +922,55 @@ function onScroll(){
 let tick=0;addEventListener('scroll',()=>{if(!tick){tick=1;requestAnimationFrame(()=>{tick=0;onScroll()})}},{passive:true});
 addEventListener('resize',measure);addEventListener('load',measure);measure();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
+
+/* ---------- квиз-подбор ---------- */
+const QZ=[
+ {k:'c',t:'Откуда везём?',o:[['jp','Япония','правый руль, аукционы'],['kr','Корея','левый руль, Encar'],['cn','Китай','левый руль, свежие годы'],['eu','Европа','под заказ'],['us','США','под заказ'],['any','Посоветуйте','поможем выбрать']]},
+ {k:'b',t:'Какой кузов?',o:[['sedan','Седан'],['suv','Кроссовер'],['mpv','Минивэн'],['hatch','Хэтчбек или универсал'],['kei','Кей-кар'],['any','Пока не знаю']],sil:1},
+ {k:'p',t:'Бюджет под ключ?',o:[['0-1000000','до 1 млн ₽'],['1000000-2000000','1–2 млн ₽'],['2000000-3000000','2–3 млн ₽'],['3000000-5000000','3–5 млн ₽'],['5000000-1e9','от 5 млн ₽']]},
+ {k:'w',t:'Когда нужна машина?',o:[['now','Как можно скорее','подойдёт машина во Владивостоке'],['3m','В течение 2–3 месяцев','привезём с аукциона'],['look','Пока присматриваюсь','пришлём варианты']]}
+];
+const qz=$('#quiz'),qzBody=$('#qzBody');let qa={},qs=0;
+const qLabel=(k,v)=>{const q=QZ.find(q=>q.k===k),o=q&&q.o.find(o=>o[0]===v);return o?o[1]:''};
+function qMatch(){
+  const [a,b]=(qa.p||'0-1e9').split('-').map(Number);
+  return LOTS.filter(l=>(qa.c==='any'||qa.c===l.c)&&(qa.b==='any'||qa.b===l.b||(qa.b==='hatch'&&l.b==='wagon'))&&l.p>a&&l.p<=b)
+    .sort((x,y)=>(y.here?1:0)-(x.here?1:0));
+}
+function qRender(dir){
+  const total=QZ.length;$('#qzBar').style.width=(Math.min(qs,total)/total*100)+'%';
+  $('#qzN').textContent=qs<total?`Вопрос ${qs+1} из ${total}`:'Готово';
+  qzBody.className='qz-body';void qzBody.offsetWidth;if(!calm)qzBody.classList.add(dir<0?'back':'in');
+  if(qs<total){
+    const q=QZ[qs];
+    qzBody.innerHTML=`<h2 id="qzTitle">${q.t}</h2><div class="qz-opts">${q.o.map(o=>`<button type="button" class="qz-opt" data-v="${o[0]}" aria-pressed="${qa[q.k]===o[0]}">${q.sil&&SIL[o[0]]?SIL[o[0]]:''}${o[1]}${o[2]?`<small>${o[2]}</small>`:''}</button>`).join('')}</div>${qs?'<button type="button" class="qz-back">Назад</button>':''}`;
+    return;
+  }
+  const m=qMatch(),top=m.slice(0,3);
+  const sum=[qLabel('c',qa.c),qLabel('b',qa.b),qLabel('p',qa.p),qLabel('w',qa.w)].join(' · ');
+  qzBody.innerHTML=`<h2 id="qzTitle">${m.length?'Есть подходящие автомобили':'Привезём под заказ'}</h2>
+  <p class="qz-sum">${sum}</p>
+  ${top.length?`<div class="qz-match">${top.map(l=>`<button type="button" data-lot="${l.id}"><div><em>${l.t}</em><span>${l.y} · ${km(l.km)} · ${C[l.c].n}${l.here?' · уже во Владивостоке':''}</span></div><b class="num">${rub(l.p)}</b></button>`).join('')}</div>`:'<p>Сейчас в каталоге таких машин нет. Менеджер подберёт варианты на аукционах и площадках и посчитает цену под ключ.</p>'}
+  <div class="qz-f"><label for="qzName">Как вас зовут<input id="qzName" autocomplete="given-name" placeholder="Александр"></label><label for="qzCity">Город<input id="qzCity" autocomplete="address-level2" placeholder="Санкт-Петербург"></label></div>
+  <div class="qz-done"><a class="btn amber" id="qzSend" target="_blank" rel="noopener" href="#">Отправить менеджеру в Telegram</a><a class="btn ghost num" href="tel:+79952306244">+7 995 230-62-44</a></div>
+  <p class="fine">Откроется чат с менеджером, ваши ответы уже будут в поле сообщения. С этой страницы данные никуда не отправляются.</p>
+  <button type="button" class="qz-back">Изменить ответы</button>`;
+  const upd=()=>{const n=$('#qzName').value.trim(),c=$('#qzCity').value.trim();
+    let t='Здравствуйте!'+(n?' Меня зовут '+n+'.':'')+' Хочу подобрать автомобиль.\nСтрана: '+qLabel('c',qa.c)+'\nКузов: '+qLabel('b',qa.b)+'\nБюджет: '+qLabel('p',qa.p)+'\nСрок: '+qLabel('w',qa.w)+(c?'\nГород: '+c:'');
+    if(top.length)t+='\nПонравились: '+top.map(l=>l.t+' '+l.y).join(', ');
+    $('#qzSend').href=tg(t)};
+  qzBody.querySelectorAll('input').forEach(i=>i.oninput=upd);upd();
+}
+qzBody.addEventListener('click',e=>{
+  const o=e.target.closest('.qz-opt');
+  if(o){qa[QZ[qs].k]=o.dataset.v;o.setAttribute('aria-pressed','true');setTimeout(()=>{qs++;qRender(1)},calm?0:160);return}
+  if(e.target.closest('.qz-back')){qs=qs>=QZ.length?0:Math.max(0,qs-1);qRender(-1);return}
+  const l=e.target.closest('[data-lot]');if(l){qz.close();openLot(+l.dataset.lot)}
+});
+qz.querySelector('.x').onclick=()=>qz.close();
+qz.addEventListener('click',e=>{if(e.target===qz)qz.close()});
+function openQuiz(){qa=PC!=='all'?{c:PC}:{};qs=PC!=='all'?1:0;qRender(1);qz.showModal()}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-quiz]');if(!a)return;e.preventDefault();if(typeof menu==='function')menu(false);openQuiz()});
 
 /* ---------- мобильное меню ---------- */
 const burger=$('#burger'),mnav=$('#mnav');
