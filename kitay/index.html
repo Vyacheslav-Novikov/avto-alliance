@@ -482,6 +482,8 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .car-btn::after{content:"";position:absolute;left:5%;right:3%;bottom:-3%;height:9%;background:radial-gradient(ellipse 50% 50% at 50% 45%,rgba(0,0,0,.95),rgba(0,0,0,.6) 45%,transparent 75%);z-index:0;filter:blur(2px)}
 .fog{position:absolute;z-index:-1;left:50%;width:170%;height:95%;bottom:4%;transform:translateX(-50%);pointer-events:none;-webkit-mask:url(../img/hero/smoke-a.webp) center/100% 100%;mask:url(../img/hero/smoke-a.webp) center/100% 100%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(196,214,218,.75),rgba(150,170,176,.35) 45%,transparent 75%);animation:fog 14s ease-in-out infinite alternate}
 .fog.r{width:110%;left:auto;right:-38%;transform:none;bottom:2%;height:80%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(170,190,196,.6),transparent 72%);animation-duration:18s;animation-direction:alternate-reverse}
+.fog,.haze{-webkit-mask-image:var(--fm),linear-gradient(to right,transparent,#000 22%,#000 78%,transparent);-webkit-mask-size:100% 100%;-webkit-mask-composite:source-in;mask-image:var(--fm),linear-gradient(to right,transparent,#000 22%,#000 78%,transparent);mask-size:100% 100%;mask-composite:intersect}
+.fog,.haze{--fm:url(../img/hero/smoke-a.webp)}
 @keyframes fog{from{translate:-3% 0}to{translate:3% -4%}}
 .gl{position:absolute;z-index:0;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .35s;mix-blend-mode:screen}
 .gl.head{left:-30%;top:-10%;width:70%;height:120%;background:radial-gradient(closest-side,rgba(210,228,255,.36),rgba(150,185,235,.12) 50%,transparent)}
