@@ -1113,6 +1113,12 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-quiz]');if
   if(fine){btn.addEventListener('pointerenter',()=>{clearTimeout(leaveT);set(true)});stage.addEventListener('pointerleave',()=>set(false))}
   btn.addEventListener('click',()=>set(fine?true:!stage.classList.contains('on')));
   const show=$('#show');
+  /* АЛЬЯНС всегда чуть заходит за крышу, на любом экране */
+  const w2=document.querySelector('.w2'),sin=document.querySelector('.show-in');
+  const fitW2=()=>{if(innerWidth<900){w2.style.top='';return}
+    const st=stage.getBoundingClientRect().top-sin.getBoundingClientRect().top,h=w2.getBoundingClientRect().height;
+    w2.style.top=Math.max(0,st-h*.84)+'px'};
+  addEventListener('resize',fitW2);if(document.fonts)document.fonts.ready.then(fitW2);fitW2();
   /* шапка прозрачная над витриной */
   const top=document.querySelector('.top');
   const over=()=>top.classList.toggle('over',scrollY<show.offsetHeight-80&&document.getElementById('mnav').hidden);
