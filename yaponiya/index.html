@@ -477,19 +477,19 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .haze{position:absolute;z-index:3;left:-25%;right:-25%;bottom:-14%;height:42%;pointer-events:none;-webkit-mask:url(../img/hero/smoke-a.webp) center/100% 100%;mask:url(../img/hero/smoke-a.webp) center/100% 100%;background:linear-gradient(to top,rgba(185,202,207,.38),rgba(185,202,207,.12) 60%,transparent);animation:haze 16s ease-in-out infinite alternate}
 .haze.h2{bottom:-6%;height:30%;left:-10%;right:-40%;opacity:.7;transform:scaleX(-1);animation-duration:21s;animation-direction:alternate-reverse}
 @keyframes haze{from{translate:-4% 0}to{translate:4% -6%}}
-.lt.fbeam{z-index:0;left:-34%;top:99%;width:40%;height:16%;transform:translateY(-50%);border-radius:0;background:radial-gradient(ellipse 50% 50% at 80% 50%,rgba(225,236,255,.22),rgba(225,236,255,.08) 45%,transparent 70%);filter:blur(4px)}
+.lt.fbeam{z-index:0;left:-36%;top:99%;width:44%;height:18%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(225,236,255,.2),rgba(225,236,255,.07) 55%,transparent);filter:blur(6px)}
 .hc-refl{position:absolute;left:0;top:98.6%;width:100%;height:auto;transform:scaleY(-1);transform-origin:top;opacity:.13;filter:blur(4px) brightness(.5) saturate(.7);-webkit-mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);pointer-events:none}
 .car-btn::after{content:"";position:absolute;left:5%;right:3%;bottom:-3%;height:9%;background:radial-gradient(ellipse 50% 50% at 50% 45%,rgba(0,0,0,.95),rgba(0,0,0,.6) 45%,transparent 75%);z-index:0;filter:blur(2px)}
 .fog{position:absolute;z-index:-1;left:50%;width:170%;height:95%;bottom:4%;transform:translateX(-50%);pointer-events:none;-webkit-mask:url(../img/hero/smoke-a.webp) center/100% 100%;mask:url(../img/hero/smoke-a.webp) center/100% 100%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(196,214,218,.75),rgba(150,170,176,.35) 45%,transparent 75%);animation:fog 14s ease-in-out infinite alternate}
 .fog.r{width:110%;left:auto;right:-38%;transform:none;bottom:2%;height:80%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(170,190,196,.6),transparent 72%);animation-duration:18s;animation-direction:alternate-reverse}
 @keyframes fog{from{translate:-3% 0}to{translate:3% -4%}}
 .gl{position:absolute;z-index:0;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .35s;mix-blend-mode:screen}
-.gl.head{left:-30%;top:-10%;width:70%;height:120%;background:radial-gradient(ellipse 50% 45% at 40% 55%,rgba(210,228,255,.42),rgba(150,185,235,.14) 40%,transparent 64%);filter:blur(14px)}
-.gl.tail{right:-30%;top:-25%;width:65%;height:130%;background:radial-gradient(ellipse 50% 45% at 60% 50%,rgba(255,70,50,.55),rgba(200,30,20,.2) 40%,transparent 64%);filter:blur(14px)}
+.gl.head{left:-30%;top:-10%;width:70%;height:120%;background:radial-gradient(closest-side,rgba(210,228,255,.36),rgba(150,185,235,.12) 50%,transparent)}
+.gl.tail{right:-30%;top:-25%;width:65%;height:130%;background:radial-gradient(closest-side,rgba(255,70,50,.5),rgba(200,30,20,.18) 50%,transparent)}
 .lt{position:absolute;z-index:2;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .25s}
-.lt.head{left:5.4%;top:52.9%;width:9%;height:10%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,#fff 0%,#EEF4FF 20%,rgba(170,205,255,.5) 45%,transparent 70%)}
-.lt.beam{left:-26%;top:60%;width:32%;height:26%;transform:translateY(-50%);border-radius:0;background:radial-gradient(ellipse 100% 60% at 100% 50%,rgba(225,236,255,.5),transparent 72%)}
-.lt.tail{left:94%;top:41.3%;width:7.5%;height:11%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,#FFE0D8 0%,#FF3B28 28%,rgba(255,30,20,.45) 52%,transparent 72%)}
+.lt.head{left:5.4%;top:52.9%;width:9%;height:10%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#fff 0%,rgba(238,244,255,.9) 25%,rgba(170,205,255,.4) 55%,transparent)}
+.lt.beam{z-index:0;left:-30%;top:56%;width:38%;height:34%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(225,236,255,.32),rgba(225,236,255,.1) 55%,transparent);filter:blur(6px)}
+.lt.tail{left:94%;top:41.3%;width:7.5%;height:11%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#FFE0D8 0%,#FF3B28 32%,rgba(255,30,20,.4) 60%,transparent)}
 .stage.on .lt,.stage.on .gl{opacity:1;animation:ign 1s ease-out both}
 .stage.on .lt.tail,.stage.on .gl.tail{animation-delay:.05s}
 @keyframes ign{0%{opacity:0}12%{opacity:1}24%{opacity:0}36%{opacity:1}48%{opacity:.1}62%,100%{opacity:1}}
