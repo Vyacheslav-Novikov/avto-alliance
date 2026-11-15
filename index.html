@@ -457,7 +457,7 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .w{position:absolute;margin:0;font:200 clamp(64px,14vw,222px)/.9 "Unbounded","Arial",sans-serif;letter-spacing:-.03em;white-space:nowrap;
   background:linear-gradient(180deg,#FFFFFF 0%,#E4E7E6 38%,#9AA6A5 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .w1{left:var(--gut);top:6%;z-index:1}
-.w2{right:var(--gut);top:29%;z-index:1}
+.w2{right:var(--gut);top:35%;z-index:1}
 .show-list{position:absolute;right:var(--gut);top:9%;list-style:none;padding:0;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;line-height:2.3;color:#E6EBEA}
 .show-list li::before{content:"";display:inline-block;width:6px;height:6px;margin-right:12px;border-radius:50%;background:var(--glow1);vertical-align:middle}
 .show-photo{position:absolute;left:var(--gut);top:43%;width:clamp(190px,19vw,280px);aspect-ratio:4/3;border-radius:3px;overflow:hidden;z-index:1}
@@ -477,15 +477,15 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .haze{position:absolute;z-index:3;left:-25%;right:-25%;bottom:-14%;height:42%;pointer-events:none;-webkit-mask:url(img/hero/smoke-a.webp) center/100% 100%;mask:url(img/hero/smoke-a.webp) center/100% 100%;background:linear-gradient(to top,rgba(185,202,207,.38),rgba(185,202,207,.12) 60%,transparent);animation:haze 16s ease-in-out infinite alternate}
 .haze.h2{bottom:-6%;height:30%;left:-10%;right:-40%;opacity:.7;transform:scaleX(-1);animation-duration:21s;animation-direction:alternate-reverse}
 @keyframes haze{from{translate:-4% 0}to{translate:4% -6%}}
-.lt.fbeam{left:-40%;top:88%;width:52%;height:32%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(ellipse 60% 50% at 75% 50%,rgba(225,236,255,.35),transparent 70%)}
+.lt.fbeam{z-index:0;left:-34%;top:99%;width:40%;height:16%;transform:translateY(-50%);border-radius:0;background:radial-gradient(ellipse 50% 50% at 80% 50%,rgba(225,236,255,.22),rgba(225,236,255,.08) 45%,transparent 70%);filter:blur(4px)}
 .hc-refl{position:absolute;left:0;top:98.6%;width:100%;height:auto;transform:scaleY(-1);transform-origin:top;opacity:.13;filter:blur(4px) brightness(.5) saturate(.7);-webkit-mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);pointer-events:none}
 .car-btn::after{content:"";position:absolute;left:5%;right:3%;bottom:-3%;height:9%;background:radial-gradient(ellipse 50% 50% at 50% 45%,rgba(0,0,0,.95),rgba(0,0,0,.6) 45%,transparent 75%);z-index:0;filter:blur(2px)}
 .fog{position:absolute;z-index:-1;left:50%;width:170%;height:95%;bottom:4%;transform:translateX(-50%);pointer-events:none;-webkit-mask:url(img/hero/smoke-a.webp) center/100% 100%;mask:url(img/hero/smoke-a.webp) center/100% 100%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(196,214,218,.75),rgba(150,170,176,.35) 45%,transparent 75%);animation:fog 14s ease-in-out infinite alternate}
 .fog.r{width:110%;left:auto;right:-38%;transform:none;bottom:2%;height:80%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(170,190,196,.6),transparent 72%);animation-duration:18s;animation-direction:alternate-reverse}
 @keyframes fog{from{translate:-3% 0}to{translate:3% -4%}}
 .gl{position:absolute;z-index:0;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .35s;mix-blend-mode:screen}
-.gl.head{left:-30%;top:-10%;width:70%;height:120%;background:radial-gradient(ellipse 60% 50% at 35% 55%,rgba(210,228,255,.55),rgba(150,185,235,.18) 45%,transparent 72%)}
-.gl.tail{right:-30%;top:-25%;width:65%;height:130%;background:radial-gradient(ellipse 55% 50% at 60% 50%,rgba(255,70,50,.6),rgba(200,30,20,.22) 45%,transparent 72%)}
+.gl.head{left:-30%;top:-10%;width:70%;height:120%;background:radial-gradient(ellipse 50% 45% at 40% 55%,rgba(210,228,255,.42),rgba(150,185,235,.14) 40%,transparent 64%);filter:blur(14px)}
+.gl.tail{right:-30%;top:-25%;width:65%;height:130%;background:radial-gradient(ellipse 50% 45% at 60% 50%,rgba(255,70,50,.55),rgba(200,30,20,.2) 40%,transparent 64%);filter:blur(14px)}
 .lt{position:absolute;z-index:2;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .25s}
 .lt.head{left:5.4%;top:52.9%;width:9%;height:10%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,#fff 0%,#EEF4FF 20%,rgba(170,205,255,.5) 45%,transparent 70%)}
 .lt.beam{left:-26%;top:60%;width:32%;height:26%;transform:translateY(-50%);border-radius:0;background:radial-gradient(ellipse 100% 60% at 100% 50%,rgba(225,236,255,.5),transparent 72%)}
@@ -519,7 +519,7 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
   .w2{justify-self:end;padding-right:var(--gut);order:3}
   .stage{order:2}
   .show-list{order:5}
-  .stage{width:auto;margin:6vw 4px 0;transform:none;z-index:2}
+  .stage{width:auto;margin:-4vw 4px 0;transform:none;z-index:2}
   .w2{margin-top:0!important;position:relative;z-index:1;order:1!important}
   .stage{order:2!important}
   .smoke{inset:-6% -4% 30% -4%}
