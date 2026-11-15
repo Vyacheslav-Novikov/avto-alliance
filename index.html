@@ -451,6 +451,8 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 @keyframes drift2{from{transform:scaleX(-1) translate3d(-3%,2%,0) scale(1.05)}to{transform:scaleX(-1) translate3d(5%,-4%,0) scale(1.14)}}
 .show-bg::before{content:none}
 .show-bg::after{content:"";position:absolute;inset:0;z-index:2;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.show::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:radial-gradient(ellipse 75% 70% at 50% 55%,transparent 55%,rgba(0,0,0,.55) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.5}
+.show-card,.show-list,.top{z-index:5}
 .show-in{position:relative;max-width:1440px;margin:0 auto;height:clamp(640px,calc(100svh - 68px),860px)}
 .w{position:absolute;margin:0;font:200 clamp(64px,14vw,222px)/.9 "Unbounded","Arial",sans-serif;letter-spacing:-.03em;white-space:nowrap;
   background:linear-gradient(180deg,#FFFFFF 0%,#E4E7E6 38%,#9AA6A5 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
@@ -466,8 +468,17 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .stage::before{content:"";position:absolute;z-index:-1;left:50%;top:30%;width:200vw;margin-left:-100vw;height:100vh;-webkit-mask:linear-gradient(transparent 0,rgba(0,0,0,.25) 60px,rgba(0,0,0,.75) 140px,#000 210px);mask:linear-gradient(transparent 0,rgba(0,0,0,.25) 60px,rgba(0,0,0,.75) 140px,#000 210px);
   background:url(img/hero/floor.webp) 50% 0/max(50%,1500px) auto no-repeat,#06080A}
 .car-btn{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;color:inherit;border-radius:12px;-webkit-tap-highlight-color:transparent}
-.hc-img{position:relative;z-index:1;display:block;width:100%;height:auto}
-.hc-refl{position:absolute;left:0;top:98.6%;width:100%;height:auto;transform:scaleY(-1);transform-origin:top;opacity:.32;filter:blur(3px) brightness(.55) saturate(.8);-webkit-mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);pointer-events:none}
+.hc-img{position:relative;z-index:1;display:block;width:100%;height:auto;filter:brightness(.8) contrast(.92) saturate(.78) drop-shadow(0 0 1.5px rgba(190,208,214,.35))}
+.cg{position:absolute;inset:0;z-index:1;pointer-events:none;-webkit-mask:url(img/hero/car.webp) 0 0/100% 100% no-repeat;mask:url(img/hero/car.webp) 0 0/100% 100% no-repeat}
+.cg.occ{background:linear-gradient(to bottom,transparent 0,transparent 48%,rgba(10,14,17,.35) 72%,rgba(4,6,8,.75) 100%);mix-blend-mode:multiply}
+.cg.amb{background:linear-gradient(100deg,rgba(150,180,190,.38) 0%,rgba(120,150,160,.12) 45%,rgba(60,80,90,.0) 60%,rgba(170,190,198,.3) 100%);mix-blend-mode:soft-light}
+.cs{position:absolute;z-index:0;bottom:-1.2%;width:15%;height:5%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.95),rgba(0,0,0,.55) 45%,transparent 72%);filter:blur(1.5px)}
+.cs.f{left:15.5%}.cs.r{left:71.3%}
+.haze{position:absolute;z-index:3;left:-25%;right:-25%;bottom:-14%;height:42%;pointer-events:none;-webkit-mask:url(img/hero/smoke-a.webp) center/100% 100%;mask:url(img/hero/smoke-a.webp) center/100% 100%;background:linear-gradient(to top,rgba(185,202,207,.38),rgba(185,202,207,.12) 60%,transparent);animation:haze 16s ease-in-out infinite alternate}
+.haze.h2{bottom:-6%;height:30%;left:-10%;right:-40%;opacity:.7;transform:scaleX(-1);animation-duration:21s;animation-direction:alternate-reverse}
+@keyframes haze{from{translate:-4% 0}to{translate:4% -6%}}
+.lt.fbeam{left:-40%;top:88%;width:52%;height:32%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(ellipse 60% 50% at 75% 50%,rgba(225,236,255,.35),transparent 70%)}
+.hc-refl{position:absolute;left:0;top:98.6%;width:100%;height:auto;transform:scaleY(-1);transform-origin:top;opacity:.13;filter:blur(4px) brightness(.5) saturate(.7);-webkit-mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);mask:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 26%);pointer-events:none}
 .car-btn::after{content:"";position:absolute;left:5%;right:3%;bottom:-3%;height:9%;background:radial-gradient(ellipse 50% 50% at 50% 45%,rgba(0,0,0,.95),rgba(0,0,0,.6) 45%,transparent 75%);z-index:0;filter:blur(2px)}
 .fog{position:absolute;z-index:-1;left:50%;width:170%;height:95%;bottom:4%;transform:translateX(-50%);pointer-events:none;-webkit-mask:url(img/hero/smoke-a.webp) center/100% 100%;mask:url(img/hero/smoke-a.webp) center/100% 100%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(196,214,218,.75),rgba(150,170,176,.35) 45%,transparent 75%);animation:fog 14s ease-in-out infinite alternate}
 .fog.r{width:110%;left:auto;right:-38%;transform:none;bottom:2%;height:80%;background:radial-gradient(ellipse 60% 70% at 50% 85%,rgba(170,190,196,.6),transparent 72%);animation-duration:18s;animation-direction:alternate-reverse}
@@ -579,6 +590,10 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
       <button class="car-btn" id="carBtn" type="button" aria-pressed="false" aria-label="Включить фары">
         <img class="hc-img" src="img/hero/car.webp" alt="BMW M3 Touring" width="1600" height="502" fetchpriority="high">
         <img class="hc-refl" src="img/hero/car.webp" alt="" aria-hidden="true" width="1600" height="502">
+        <i class="cs f" aria-hidden="true"></i><i class="cs r" aria-hidden="true"></i>
+        <i class="cg occ" aria-hidden="true"></i><i class="cg amb" aria-hidden="true"></i>
+        <i class="haze" aria-hidden="true"></i><i class="haze h2" aria-hidden="true"></i>
+        <i class="lt fbeam" aria-hidden="true"></i>
         <i class="gl head" aria-hidden="true"></i><i class="gl tail" aria-hidden="true"></i><i class="lt head" aria-hidden="true"></i><i class="lt beam" aria-hidden="true"></i><i class="lt tail" aria-hidden="true"></i>
       </button>
       <span class="hint" id="carHint"><i></i><span class="h-hover">Наведите на машину</span><span class="h-tap">Нажмите на машину</span></span>
