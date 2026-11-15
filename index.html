@@ -345,8 +345,9 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes sheet{from{transform:translateY(100%)}}
 
 /* курсор-подсказка */
-.tip{position:fixed;left:0;top:0;z-index:60;pointer-events:none;width:76px;height:76px;margin:16px 0 0 16px;border-radius:50%;background:var(--amber);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:14px;transform:translate(var(--x,0),var(--y,0)) scale(0);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-.tip.on{transform:translate(var(--x,0),var(--y,0)) scale(1)}
+.tip{position:fixed;left:0;top:0;z-index:60;pointer-events:none;transform:translate3d(var(--x,0),var(--y,0),0);will-change:transform}
+.tip span{display:block;margin:18px 0 0 14px;padding:7px 14px;border-radius:999px;background:var(--amber);color:var(--ink);font-weight:700;font-size:13px;white-space:nowrap;box-shadow:0 6px 16px -6px rgba(14,27,32,.5);opacity:0;transform:scale(.6);transform-origin:0 0;transition:opacity .15s,transform .2s cubic-bezier(.2,.8,.2,1)}
+.tip.on span{opacity:1;transform:scale(1)}
 @media(hover:none){.tip{display:none}}
 
 @media(prefers-reduced-motion:reduce){
@@ -690,7 +691,7 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 </nav>
 
 <dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
-<div class="tip" id="tip" aria-hidden="true">Открыть</div>
+<div class="tip" id="tip" aria-hidden="true"><span>Открыть</span></div>
 
 <script>
 /* ---------- данные: лоты из канала t.me/autospetersburg ---------- */
@@ -858,7 +859,7 @@ burger.onclick=()=>menu(mnav.hidden);mnav.onclick=e=>{if(e.target.closest('a'))m
 /* ---------- курсор над карточками ---------- */
 const tip=$('#tip');
 if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!calm){
-  addEventListener('pointermove',e=>{tip.style.setProperty('--x',e.clientX+'px');tip.style.setProperty('--y',e.clientY+'px');
+  addEventListener('pointermove',e=>{tip.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0)`;
     tip.classList.toggle('on',!!(e.target.closest&&e.target.closest('.lot')))},{passive:true});
   addEventListener('scroll',()=>tip.classList.remove('on'),{passive:true});
 }
