@@ -1140,9 +1140,16 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-quiz]');if
   const show=$('#show');
   /* АЛЬЯНС всегда чуть заходит за крышу, на любом экране */
   const w2=document.querySelector('.w2'),sin=document.querySelector('.show-in');
-  const fitW2=()=>{if(innerWidth<900){w2.style.top='';return}
-    const st=stage.getBoundingClientRect().top-sin.getBoundingClientRect().top,h=w2.getBoundingClientRect().height;
-    w2.style.top=Math.max(0,st-h*.84)+'px'};
+  const w1=document.querySelector('.w1');
+  const fitW2=()=>{w1.style.fontSize=w2.style.fontSize='';if(innerWidth<900){w2.style.top='';return}
+    const base=parseFloat(getComputedStyle(w1).fontSize);
+    for(let k=1;k>.5;k-=.04){
+      w1.style.fontSize=w2.style.fontSize=(base*k)+'px';
+      const si=sin.getBoundingClientRect(),st=stage.getBoundingClientRect().top-si.top,h=w2.getBoundingClientRect().height,
+            w1b=w1.getBoundingClientRect().bottom-si.top,top=st-h*.84;
+      w2.style.top=top+'px';
+      if(top>=w1b-h*.06)break;
+    }};
   addEventListener('resize',fitW2);if(document.fonts)document.fonts.ready.then(fitW2);fitW2();
   /* шапка прозрачная над витриной */
   const top=document.querySelector('.top');
