@@ -443,7 +443,7 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .show-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;background:
   radial-gradient(ellipse 46% 34% at 50% 86%,rgba(150,170,176,.20),transparent 70%),
   radial-gradient(ellipse 70% 60% at 48% 38%,#24313A 0%,#121A20 55%,#080C0F 100%)}
-.smoke{position:absolute;inset:-6% -4% 18% -4%;-webkit-mask:var(--m) center/cover no-repeat;mask:var(--m) center/cover no-repeat;pointer-events:none}
+.smoke{position:absolute;inset:-6% -4% 12% -4%;-webkit-mask:var(--m) center/cover no-repeat;mask:var(--m) center/cover no-repeat;pointer-events:none}
 .smoke.a{--m:url(img/hero/smoke-a.webp);background:#C3D6DA;opacity:.95;animation:drift 16s ease-in-out infinite alternate}
 .smoke.c{--m:url(img/hero/smoke-a.webp);background:#9FB6BC;opacity:.55;transform:scaleX(-1);animation:drift2 24s ease-in-out infinite alternate}
 .smoke.b{--m:url(img/hero/smoke-b.webp);background:#9DB0B6;opacity:.6;animation:drift 13s ease-in-out infinite alternate-reverse}
@@ -463,9 +463,8 @@ html[data-country=cn]{--glow1:#E8442A;--glow2:#6E1010;--glow3:#FFD45A}
 .show-photo span{position:absolute;left:12px;bottom:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
 .show-link{position:absolute;left:var(--gut);top:calc(43% + clamp(190px,19vw,280px)*.75 + 16px);display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#E6EBEA}
 .stage{position:absolute;left:50%;bottom:20%;width:min(62vw,1000px);transform:translateX(-50%);z-index:2}
-.stage::before{content:"";position:absolute;z-index:-1;left:50%;top:97%;width:200vw;margin-left:-100vw;height:100vh;
-  background:radial-gradient(ellipse 30% 6% at 50% 0,rgba(205,220,224,.12),transparent 70%),linear-gradient(rgba(10,16,19,.35),transparent 12%),url(img/hero/floor.webp) 50% 0/max(50%,1500px) auto no-repeat,#07090B;
-  box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+.stage::before{content:"";position:absolute;z-index:-1;left:50%;top:38%;width:200vw;margin-left:-100vw;height:100vh;-webkit-mask:linear-gradient(transparent 0,rgba(0,0,0,.35) 50px,rgba(0,0,0,.8) 110px,#000 170px);mask:linear-gradient(transparent 0,rgba(0,0,0,.35) 50px,rgba(0,0,0,.8) 110px,#000 170px);
+  background:radial-gradient(ellipse 34% 14% at 50% 22%,rgba(205,220,224,.10),transparent 70%),url(img/hero/floor.webp) 50% 0/max(50%,1500px) auto no-repeat,#07090B}
 .car-btn{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;color:inherit;border-radius:12px;-webkit-tap-highlight-color:transparent}
 .hc-img{position:relative;z-index:1;display:block;width:100%;height:auto}
 .hc-refl{position:absolute;left:0;top:100%;width:100%;height:auto;transform:scaleY(-1);transform-origin:top;opacity:.18;filter:blur(2px) brightness(.7);-webkit-mask:linear-gradient(to bottom,#000,transparent 30%);mask:linear-gradient(to bottom,#000,transparent 30%);pointer-events:none}
