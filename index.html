@@ -157,6 +157,10 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .price{font:900 40px/1 var(--display);white-space:nowrap}
 .status{font-size:12px;font-weight:600;padding:5px 9px;border-radius:3px;background:var(--paper)}
 .status.here{background:var(--amber)}
+.lot-foot{position:relative}
+.open{position:absolute;right:0;bottom:0;padding:8px 14px;border-radius:3px;background:var(--amber);color:var(--ink);font-size:13px;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+@media(hover:hover){.lot:hover .open,.lot:focus-visible .open{opacity:1;transform:none}.lot:hover .status,.lot:focus-visible .status{opacity:0}}
+.status{transition:opacity .15s}
 .grade{position:absolute;top:14px;right:14px;width:62px;height:62px;border:2px solid var(--stamp);border-radius:50%;color:var(--stamp);display:grid;place-content:center;text-align:center;font-size:9px;line-height:1.1;font-weight:700;transform:rotate(9deg);background:color-mix(in srgb,var(--sheet) 80%,transparent)}
 .grade b{font:900 26px/.9 var(--display)}
 .empty{grid-column:1/-1;padding:40px;border:1px dashed var(--ink);border-radius:4px;text-align:center}
@@ -345,10 +349,6 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes sheet{from{transform:translateY(100%)}}
 
 /* курсор-подсказка */
-.tip{position:fixed;left:0;top:0;z-index:60;pointer-events:none;transform:translate3d(var(--x,0),var(--y,0),0);will-change:transform}
-.tip span{display:block;margin:18px 0 0 14px;padding:7px 14px;border-radius:999px;background:var(--amber);color:var(--ink);font-weight:700;font-size:13px;white-space:nowrap;box-shadow:0 6px 16px -6px rgba(14,27,32,.5);opacity:0;transform:scale(.6);transform-origin:0 0;transition:opacity .15s,transform .2s cubic-bezier(.2,.8,.2,1)}
-.tip.on span{opacity:1;transform:scale(1)}
-@media(hover:none){.tip{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -429,87 +429,87 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Tank G</h3><p>Расход 4,6 л/100 км</p>
   <div class="spec"><div>Год<b>2017</b></div><div>Пробег<b>144&nbsp;000 км</b></div><div>Двигатель<b>1.0 бензин, 69 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">860&nbsp;000 ₽</span><span class="status here">Во Владивостоке</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1991;">
+  <div class="lot-foot"><span class="price num">860&nbsp;000 ₽</span><span class="status here">Во Владивостоке</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1991;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Suzuki Every PZ Turbo</h3><p>Высокая крыша H/R</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>14&nbsp;000 км</b></div><div>Двигатель<b>0.66 турбо, 64 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;237&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1984;">
+  <div class="lot-foot"><span class="price num">1&nbsp;237&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1984;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">ROK</span>Корея · левый руль</div>
   <h3>Mercedes-Benz GLC 300 Coupe</h3><p>Encar: без ДТП и окрасов</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>14&nbsp;741 км</b></div><div>Двигатель<b>2.0 турбо, гибрид 48V, 258 л.с.</b></div><div>Привод<b>Полный 4MATIC</b></div></div>
-  <div class="lot-foot"><span class="price num">7&nbsp;990&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1979;">
+  <div class="lot-foot"><span class="price num">7&nbsp;990&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1979;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">ROK</span>Корея · левый руль</div>
   <h3>Kia K3 Prestige</h3><p>Диагностика Encar</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>34&nbsp;325 км</b></div><div>Двигатель<b>1.6 MPI, 123 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;842&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1970;">
+  <div class="lot-foot"><span class="price num">1&nbsp;842&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1970;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Volkswagen Passat 280TSI</h3><p>Комплектация Comfort</p>
   <div class="spec"><div>Год<b>2020</b></div><div>Пробег<b>52&nbsp;000 км</b></div><div>Двигатель<b>1.4 TSI турбо, 150 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;826&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1963;">
+  <div class="lot-foot"><span class="price num">1&nbsp;826&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1963;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Daihatsu Hijet Cargo</h3><p>Комплектация Deluxe</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>8&nbsp;000 км</b></div><div>Двигатель<b>0.66 бензин, 46 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">928&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1951;">
+  <div class="lot-foot"><span class="price num">928&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1951;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Honda Freed Spike</h3><p>G Just Selection</p>
   <div class="spec"><div>Год<b>2015</b></div><div>Пробег<b>71&nbsp;000 км</b></div><div>Двигатель<b>1.5 бензин, 118 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;187&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1941;">
+  <div class="lot-foot"><span class="price num">1&nbsp;187&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1941;">
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Citroen C3 Aircross</h3><p>Правый руль</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>56&nbsp;000 км</b></div><div>Двигатель<b>1.2 турбо, 110 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;091&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1933;">
+  <div class="lot-foot"><span class="price num">1&nbsp;091&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1933;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Audi Q2L 35 TFSI</h3><p>Fashion Dynamic Edition</p>
   <div class="spec"><div>Год<b>2024</b></div><div>Пробег<b>12&nbsp;000 км</b></div><div>Двигатель<b>1.5 TFSI турбо, 160 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;558&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1908;">
+  <div class="lot-foot"><span class="price num">2&nbsp;558&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1908;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Mazda CX-5 2.0</h3><p>Smart Edition</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>43&nbsp;000 км</b></div><div>Двигатель<b>2.0 бензин, 155 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;359&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1899;">
+  <div class="lot-foot"><span class="price num">2&nbsp;359&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1899;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>BMW X1 sDrive20Li</h3><p>Удлинённая база</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>60&nbsp;000 км</b></div><div>Двигатель<b>1.5 турбо, 140 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;963&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1880;">
+  <div class="lot-foot"><span class="price num">1&nbsp;963&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1880;">
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Audi A3 Sportback S Line</h3><p>Правый руль</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>19&nbsp;000 км</b></div><div>Двигатель<b>1.0 TFSI турбо, 110 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;348&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1845;">
+  <div class="lot-foot"><span class="price num">1&nbsp;348&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot" type="button" style="view-transition-name: lot1845;">
   
   <div class="lot-in"><div class="lot-meta"><span class="oval">CHN</span>Китай · левый руль</div>
   <h3>Volkswagen Golf 8 R-Line</h3><p>8,5 с до 100 км/ч</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>50&nbsp;000 км</b></div><div>Двигатель<b>1.4 TSI турбо, 150 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;957&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1829;">
+  <div class="lot-foot"><span class="price num">1&nbsp;957&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1829;">
   <span class="grade">оценка<b>4</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Corolla Fielder</h3><p>Универсал</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>97&nbsp;000 км</b></div><div>Двигатель<b>1.5 бензин, 103 л.с.</b></div><div>Привод<b>Полный 4WD</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;461&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1810;">
+  <div class="lot-foot"><span class="price num">1&nbsp;461&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1810;">
   <span class="grade">оценка<b>4</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Mazda Roadster</h3><p>Кожаный салон</p>
   <div class="spec"><div>Год<b>2021</b></div><div>Пробег<b>67&nbsp;000 км</b></div><div>Двигатель<b>1.5 SkyActiv-G, 132 л.с.</b></div><div>Привод<b>Задний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;911&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1651;">
+  <div class="lot-foot"><span class="price num">1&nbsp;911&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1651;">
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Voxy Hybrid</h3><p>7 мест</p>
   <div class="spec"><div>Год<b>2022</b></div><div>Пробег<b>84&nbsp;000 км</b></div><div>Двигатель<b>1.8 гибрид, 98 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">2&nbsp;408&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1644;">
+  <div class="lot-foot"><span class="price num">2&nbsp;408&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><button class="lot graded" type="button" style="view-transition-name: lot1644;">
   <span class="grade">оценка<b>4.5</b></span>
   <div class="lot-in"><div class="lot-meta"><span class="oval">J</span>Япония · правый руль</div>
   <h3>Toyota Raize G</h3><p>Длина 3995 мм</p>
   <div class="spec"><div>Год<b>2023</b></div><div>Пробег<b>8&nbsp;000 км</b></div><div>Двигатель<b>1.2 бензин, 87 л.с.</b></div><div>Привод<b>Передний</b></div></div>
-  <div class="lot-foot"><span class="price num">1&nbsp;349&nbsp;000 ₽</span><span class="status ">Под заказ</span></div></div></button><!--e:lots--></div>
+  <div class="lot-foot"><span class="price num">1&nbsp;349&nbsp;000 ₽</span><span class="status ">Под заказ</span><span class="open" aria-hidden="true">Открыть лот</span></div></div></button><!--e:lots--></div>
   <div class="band"><p>Нужной машины нет в списке? Привезём под заказ: назовите модель и бюджет, посчитаем цену под ключ.</p><a class="btn" href="#order">Подобрать автомобиль</a></div>
 </section>
 
@@ -691,7 +691,6 @@ dialog[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 </nav>
 
 <dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
-<div class="tip" id="tip" aria-hidden="true"><span>Открыть</span></div>
 
 <script>
 /* ---------- данные: лоты из канала t.me/autospetersburg ---------- */
@@ -750,7 +749,7 @@ function card(l){
   <div class="lot-in"><div class="lot-meta"><span class="oval">${C[l.c].o}</span>${C[l.c].n} · ${l.rhd?'правый руль':'левый руль'}</div>
   <h3>${l.t}</h3><p>${l.more}</p>
   <div class="spec"><div>Год<b>${l.y}</b></div><div>Пробег<b>${km(l.km)}</b></div><div>Двигатель<b>${l.eng}, ${l.hp} л.с.</b></div><div>Привод<b>${l.dr}</b></div></div>
-  <div class="lot-foot"><span class="price num">${rub(l.p)}</span><span class="status ${l.here?'here':''}">${l.here?'Во Владивостоке':'Под заказ'}</span></div></div>`;
+  <div class="lot-foot"><span class="price num">${rub(l.p)}</span><span class="status ${l.here?'here':''}">${l.here?'Во Владивостоке':'Под заказ'}</span><span class="open" aria-hidden="true">Открыть лот</span></div></div>`;
   const im=b.querySelector('img');im.onload=()=>b.classList.add('pic');im.onerror=()=>im.remove();
   b.onclick=()=>openLot(l.id);return b;
 }
@@ -856,13 +855,6 @@ const burger=$('#burger'),mnav=$('#mnav');
 const menu=o=>{mnav.hidden=!o;burger.setAttribute('aria-expanded',o)};
 burger.onclick=()=>menu(mnav.hidden);mnav.onclick=e=>{if(e.target.closest('a'))menu(false)};
 
-/* ---------- курсор над карточками ---------- */
-const tip=$('#tip');
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!calm){
-  addEventListener('pointermove',e=>{tip.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0)`;
-    tip.classList.toggle('on',!!(e.target.closest&&e.target.closest('.lot')))},{passive:true});
-  addEventListener('scroll',()=>tip.classList.remove('on'),{passive:true});
-}
 </script>
 </body>
 </html>
