@@ -360,7 +360,7 @@ footer{background:var(--petrol-deep);color:var(--odm);font-size:14px;overflow:hi
 /* ---------- отзывы ---------- */
 .rv-head{align-items:end}
 .rv-side{display:grid;gap:20px}
-.rv-nav{display:flex;align-items:center;gap:14px}
+.rv-nav{display:flex;align-items:center;gap:10px}
 .rv-btn{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,opacity .2s,transform .15s}
 .rv-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .rv-btn:disabled{opacity:.25;cursor:default}
@@ -807,7 +807,6 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
       <p class="lead">Реальные клиенты, их машины и их слова. Все отзывы с фото и видео публикуем в Telegram.</p>
       <div class="rv-nav">
         <button type="button" class="rv-btn prev" aria-label="Предыдущие отзывы"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <span class="rv-n num" aria-live="polite"></span>
         <button type="button" class="rv-btn next" aria-label="Следующие отзывы"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
@@ -1177,12 +1176,12 @@ const RC={jp:['J','Япония'],kr:['ROK','Корея'],cn:['CHN','Китай'
         <q>${r.lead}</q>
         <div class="rv-foot"><div class="rv-who"><b>${r.who}</b><small>${r.city}</small></div><button type="button" class="rv-more" data-rv="${i}">Читать отзыв</button></div>
       </div></article>`}).join('');
-  const prev=document.querySelector('.rv-btn.prev'),next=document.querySelector('.rv-btn.next'),n=document.querySelector('.rv-n');
+  const prev=document.querySelector('.rv-btn.prev'),next=document.querySelector('.rv-btn.next');
   const step=()=>{const c=tr.querySelector('.rv');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||20):300};
   const per=()=>Math.max(1,Math.round(tr.clientWidth/step()));
   const sync=()=>{const i=Math.round(tr.scrollLeft/step()),max=tr.scrollWidth-tr.clientWidth-4;
     prev.disabled=tr.scrollLeft<=4;next.disabled=tr.scrollLeft>=max;
-    n.textContent=`${Math.min(REV.length,i+per())} / ${REV.length}`};
+  };
   prev.onclick=()=>tr.scrollBy({left:-step(),behavior:calm?'auto':'smooth'});
   next.onclick=()=>tr.scrollBy({left:step(),behavior:calm?'auto':'smooth'});
   let t;tr.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(sync)},{passive:true});
