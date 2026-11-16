@@ -357,6 +357,53 @@ footer{background:var(--petrol-deep);color:var(--odm);font-size:14px;overflow:hi
 .qz-done{display:flex;flex-wrap:wrap;gap:10px}
 .qz-done .btn{flex:1 1 240px}
 @media(max-width:700px){.qz{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-radius:14px 14px 0 0}.qz-f{grid-template-columns:1fr}.qz-opts{grid-template-columns:1fr 1fr}.qz-opt{min-height:58px;padding:12px}}
+/* ---------- отзывы ---------- */
+.rv-head{align-items:end}
+.rv-side{display:grid;gap:20px}
+.rv-nav{display:flex;align-items:center;gap:14px}
+.rv-btn{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,opacity .2s,transform .15s}
+.rv-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.rv-btn:disabled{opacity:.25;cursor:default}
+.rv-btn:active:not(:disabled){transform:scale(.94)}
+@media(hover:hover){.rv-btn:hover:not(:disabled){background:var(--ink);color:var(--sheet)}}
+.rv-n{font-size:15px;color:var(--muted);min-width:5ch;text-align:center}
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*20px)/3);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 18px;overscroll-behavior-x:contain}
+.rv-track::-webkit-scrollbar{display:none}
+@media(max-width:1019px){.rv-track{grid-auto-columns:calc((100% - 20px)/2)}}
+@media(max-width:640px){.rv-track{grid-auto-columns:86%;gap:14px;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-padding-inline:var(--gut)}.rv-btn{width:48px;height:48px}}
+.rv{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--line);border-radius:6px;overflow:hidden;min-width:0}
+.rv-media{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:var(--ink);cursor:pointer;overflow:hidden}
+.rv-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover){.rv:hover .rv-media img{transform:scale(1.04)}}
+.rv-play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:transform .25s}
+.rv-play::after{content:"";margin-left:5px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
+@media(hover:hover){.rv-media:hover .rv-play{transform:scale(1.08)}}
+.rv-count{position:absolute;right:12px;bottom:12px;display:flex;gap:6px}
+.rv-count span{padding:5px 10px;border-radius:999px;background:rgba(14,27,32,.75);color:#fff;font-size:12px;font-weight:600}
+.rv-body{display:flex;flex-direction:column;gap:12px;padding:20px 20px 18px;flex:1}
+.rv-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.rv-meta .oval{color:var(--ink)}
+.rv h3{font-size:30px;line-height:1}
+.rv-facts{font-size:13px;color:var(--muted)}
+.rv q{quotes:none;font-size:16px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.rv-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:end;gap:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.rv-who b{display:block;font-size:15px}
+.rv-who small{font-size:13px;color:var(--muted)}
+.rv-more{background:none;border:0;padding:4px 0;font-weight:600;font-size:14px;text-decoration:underline;text-underline-offset:4px;cursor:pointer;white-space:nowrap}
+.rv-all{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;text-underline-offset:4px}
+/* окно отзыва */
+.rvd{width:min(1080px,calc(100% - 24px))}
+.rvd-in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.rvd-media{position:relative;background:#000;min-height:420px}
+.rvd-track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rvd-track::-webkit-scrollbar{display:none}
+.rvd-track>*{flex:0 0 100%;width:100%;height:min(76dvh,640px)!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;scroll-snap-align:center;background:#000}
+.rvd .gal-n{top:14px;bottom:auto}
+.rvd-text{padding:clamp(22px,3vw,40px);display:grid;gap:14px;align-content:start;max-height:min(76dvh,640px);overflow:auto}
+.rvd-text h2{font-size:clamp(38px,4vw,54px)}
+.rvd-text p{font-size:16px;line-height:1.6}
+@media(max-width:800px){.rvd{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-radius:14px 14px 0 0}.rvd-in{grid-template-columns:1fr}.rvd-media{min-height:0}.rvd-track>*{height:56dvh}.rvd-text{max-height:none}}
+
 /* окно лота */
 dialog{border:0;padding:0;margin:auto;width:min(880px,calc(100% - 24px));max-height:calc(100dvh - 24px);border-radius:6px;background:var(--sheet);color:var(--ink);overflow:auto}
 dialog::backdrop{background:rgba(10,41,48,.72);backdrop-filter:blur(4px)}
@@ -569,7 +616,7 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
       <a href="#catalog">Каталог</a>
       <a href="#countries">Страны</a>
       <a href="#route">Как работаем</a>
-      <a href="#cost">Цена</a>
+      <a href="#reviews">Отзывы</a>
       <a href="#faq">Вопросы</a>
     </nav>
     <a class="tel num" href="tel:+79952306244">+7 995 230-62-44</a>
@@ -578,7 +625,7 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
     <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
   </div>
   <nav class="mnav" id="mnav" aria-label="Разделы" hidden>
-    <a href="#catalog">Каталог</a><a href="#countries">Страны</a><a href="#route">Как работаем</a><a href="#cost">Цена</a><a href="#faq">Вопросы</a><a href="#order" data-quiz>Подобрать авто</a>
+    <a href="#catalog">Каталог</a><a href="#countries">Страны</a><a href="#route">Как работаем</a><a href="#reviews">Отзывы</a><a href="#cost">Цена</a><a href="#faq">Вопросы</a><a href="#order" data-quiz>Подобрать авто</a>
   </nav>
   <div class="prog" id="prog"></div>
 </header>
@@ -793,27 +840,20 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
   </div>
 </section>
 
-<section class="block wrap" id="cases">
-  <div class="head">
-    <h2>Как это выглядит в деле</h2>
-    <p class="lead">Поездки к партнёрам и выдачи показываем в соцсетях.</p>
-  </div>
-  <div class="case">
-    <div class="case-card">
-      <div class="lot-meta"><span class="oval">ROK</span>Кейс из канала</div>
-      <h3 style="font-size:clamp(40px,5vw,64px);margin:16px 0">Kia K5 2026 Signature</h3>
-      <p>Клиент хотел новый бизнес-седан с максимальным оснащением и без переплаты у официальных дилеров. Нашли в Корее топовую версию: панорамная крыша, вентиляция и подогрев всех сидений, проекция на стекло, камеры 360°, адаптивный круиз.</p>
-      <p>Взяли на себя подбор, проверку, покупку, доставку морем и растаможку. Автомобиль пришёл во Владивосток без пробега по России и с полным пакетом документов.</p>
-      <span class="price num">3 960 000 ₽</span>
-      <span class="fine">цена такого же автомобиля под ключ во Владивостоке</span>
-    </div>
-    <div class="links">
-      <a href="https://t.me/autospetersburg/1962" target="_blank" rel="noopener"><span>Поездка во Владивосток за Toyota Roomy<small>видео в Telegram</small></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 14 14 4M6 4h8v8"/></svg></a>
-      <a href="https://t.me/autospetersburg/1853" target="_blank" rel="noopener"><span>Поездка в Китай к партнёрам<small>видео в Telegram</small></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 14 14 4M6 4h8v8"/></svg></a>
-      <a href="https://www.youtube.com/@autoaliance" target="_blank" rel="noopener"><span>Канал на YouTube<small>обзоры и выдачи</small></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 14 14 4M6 4h8v8"/></svg></a>
-      <a href="https://vk.com/auto_alliance_pro" target="_blank" rel="noopener"><span>Группа ВКонтакте<small>новые лоты каждый день</small></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 14 14 4M6 4h8v8"/></svg></a>
+<section class="block wrap" id="reviews">
+  <div class="head rv-head">
+    <h2>Отзывы клиентов</h2>
+    <div class="rv-side">
+      <p class="lead">Реальные клиенты, их машины и их слова. Все отзывы с фото и видео публикуем в Telegram.</p>
+      <div class="rv-nav">
+        <button type="button" class="rv-btn prev" aria-label="Предыдущие отзывы"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="rv-n num" aria-live="polite"></span>
+        <button type="button" class="rv-btn next" aria-label="Следующие отзывы"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
   </div>
+  <div class="rv-track" id="rvTrack" tabindex="0" aria-label="Отзывы клиентов"></div>
+  <a class="rv-all" href="https://t.me/OTZOVIK_by_AUTOMOBILI" target="_blank" rel="noopener">Все отзывы в Telegram-канале<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
   <div class="svc">
     <div><h3>Кредит</h3><p>Подбираем условия в <b>25+ банках</b> под выбранный автомобиль.</p></div>
     <div><h3>Выкуп</h3><p>Срочно выкупаем небитые автомобили.</p></div>
@@ -889,6 +929,7 @@ html[data-country=cn]{--petrol:#6B1219;--petrol-deep:#4B0B10;--flag:#DE2910;--od
   <div class="qz-head"><span class="qz-n num" id="qzN"></span><div class="qz-bar"><i id="qzBar"></i></div></div>
   <div class="qz-body" id="qzBody" aria-live="polite"></div>
 </dialog>
+<dialog id="rvd" class="rvd" aria-labelledby="rvdTitle"></dialog>
 <dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
 
 <script>window.PAGE_C='jp';window.ROOT='../';</script>
@@ -1156,6 +1197,66 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-quiz]');if
   const over=()=>top.classList.toggle('over',scrollY<show.offsetHeight-80&&document.getElementById('mnav').hidden);
   addEventListener('scroll',over,{passive:true});over();
   window.__over=over;
+})();
+
+/* ---------- отзывы клиентов ---------- */
+const REV=[{"id": "carnival", "car": "Kia Carnival", "c": "kr", "who": "Клиент «Авто Альянс»", "city": "Санкт-Петербург", "post": 28, "media": [["v", "carnival-1"], ["p", "carnival-p1"], ["p", "carnival-p2"], ["p", "carnival-p3"], ["p", "carnival-p4"]], "lead": "Хотели привезти KIA Carnival для большой семьи и впритык успевали до новых правил утильсбора.", "text": ["Хочется выразить огромную благодарность Александру и его команде за помощь в подборе и привозе моего автомобиля из Южной Кореи.", "Задача была явно не простой, потому что мы впритык успевали под введение новых условий утильсбора с 1 декабря. Семья у нас большая, поэтому хотели привезти KIA Carnival (4 поколение). Перед введением новых правил, машины в Корее просто выносили без осмотра. Александр и его команда все же смогли найти нужный автомобиль и выкупить его. На всех этапах логистики (паром, таможня, автовоз и др.) со мной всегда были на связи и периодически успокаивали меня, потому что машину я из за границы привозил впервые. Несмотря на длительный срок доставки (ввиду проблем с автовозами на всем дальнем востоке), мой автомобиль приехал ко мне!", "Но и после доставки автомобиля Александр оставался на связи, помог с оформлением, с антикоррозийной обработкой днища и дал все необходимые мне контакты по обслуживанию автомобиля и дополнительным услугам. Из последнего, Александр мне посоветовал очень толковых ребят по установке спутниковой сигнализации.", "Вобщем огромное спасибо за проведенную работу. Я и вся моя семья безумно довольны!"]}, {"id": "golf", "car": "Volkswagen Golf 2022", "c": "cn", "who": "Даниил Собинин", "city": "Санкт-Петербург", "post": 15, "media": [["p", "golf-p1"], ["p", "golf-p2"], ["p", "golf-p3"]], "lead": "Машина приехала в целости и сохранности!", "facts": "1.4 л, 150 л.с. · цена в СПб 2 100 000 ₽", "text": ["Александр, спасибо за проделанную работу, машина приехала в целости и сохранности!)", "Из пожеланий только хотелось бы при следующем заказе иметь какой-то GPS-трекер при доставке по России, чтобы примерно понимать, где машина едет)"]}, {"id": "sienta", "car": "Toyota Sienta 2021", "c": "jp", "who": "Руслан", "city": "Зеленогорск, Ленинградская обл.", "post": 4, "media": [["v", "sienta-1"], ["p", "sienta-p1"], ["p", "sienta-p2"], ["p", "sienta-p3"], ["p", "sienta-p4"], ["p", "sienta-p5"]], "lead": "Видеоотзыв: семейный минивэн с полным приводом из Японии.", "facts": "4WD, пробег 69 000 км · цена во Владивостоке 1 300 000 ₽", "text": ["Отзыв нашего клиента Руслана из г. Зеленогорска Ленинградской области.", "Toyota Sienta 2021 г., полный привод 4WD, пробег 69 000 км. Цена во Владивостоке 1 300 000 ₽."]}, {"id": "mazda", "car": "Mazda CX-5 2024", "c": "cn", "who": "Юрий Филиппов", "city": "Москва", "post": 19, "media": [["v", "mazda-1"], ["v", "mazda-2"], ["p", "mazda-p1"], ["p", "mazda-p2"]], "lead": "Свежий кроссовер в максимальной комплектации и с полным приводом, привезли в Москву.", "facts": "2.0 л, 155 л.с., 4WD · пробег 9 700 км · Smart Elegant Pro", "text": ["Подобрали, произвели проверку авто, купили и привезли авто в Москву.", "Задача была найти свежий авто в максимальной комплектации и на полном приводе 4WD.", "Mazda CX-5 2024 г., 2.0 л, 155 л.с., 4WD, пробег 9 700 км. Комплектация Smart Elegant Pro."]}, {"id": "taos", "car": "Volkswagen Taos 2021", "c": "ru", "who": "Светлана Колесникова", "city": "Санкт-Петербург", "post": 10, "media": [["v", "taos-1"], ["v", "taos-2"]], "lead": "Продали автомобиль с запретом на регистрацию до Нового года.", "facts": "Пробег 38 000 км · продажа за 1 190 000 ₽", "text": ["Задача была подготовить авто к продаже и продать максимально выгодно и быстро: нужно было успеть продать до нового 2026 года.", "Сложность ещё была в том, что на автомобиль был наложен запрет на регистрационные действия, нужно было оплатить все долги и штрафы.", "Максимальную сумму давали 2 120 000 ₽ (Major). В итоге удалось сторговаться за 1 190 000 ₽ (РОЛЬФ)."]}];
+const RC={jp:['J','Япония'],kr:['ROK','Корея'],cn:['CHN','Китай'],ru:['RUS','Продажа в России']};
+(()=>{
+  const tr=$('#rvTrack');if(!tr)return;
+  const R=(window.ROOT||'')+'../img/reviews/';
+  tr.innerHTML=REV.map((r,i)=>{const m=r.media[0],nv=r.media.filter(x=>x[0]==='v').length,np=r.media.length-nv;
+    return `<article class="rv" aria-label="Отзыв: ${r.car}">
+      <button type="button" class="rv-media" data-rv="${i}" aria-label="${nv?'Смотреть видео':'Смотреть фото'}: ${r.car}">
+        <img loading="lazy" src="${R}${m[1]}.jpg" alt="${r.car}, ${r.who}">${m[0]==='v'?'<span class="rv-play" aria-hidden="true"></span>':''}
+        <span class="rv-count" aria-hidden="true">${nv?`<span>▶ ${nv} видео</span>`:''}${np?`<span>${np} фото</span>`:''}</span>
+      </button>
+      <div class="rv-body">
+        <div class="rv-meta"><span class="oval">${RC[r.c][0]}</span>${RC[r.c][1]}</div>
+        <h3>${r.car}</h3>${r.facts?`<p class="rv-facts">${r.facts}</p>`:''}
+        <q>${r.lead}</q>
+        <div class="rv-foot"><div class="rv-who"><b>${r.who}</b><small>${r.city}</small></div><button type="button" class="rv-more" data-rv="${i}">Читать отзыв</button></div>
+      </div></article>`}).join('');
+  const prev=document.querySelector('.rv-btn.prev'),next=document.querySelector('.rv-btn.next'),n=document.querySelector('.rv-n');
+  const step=()=>{const c=tr.querySelector('.rv');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||20):300};
+  const per=()=>Math.max(1,Math.round(tr.clientWidth/step()));
+  const sync=()=>{const i=Math.round(tr.scrollLeft/step()),max=tr.scrollWidth-tr.clientWidth-4;
+    prev.disabled=tr.scrollLeft<=4;next.disabled=tr.scrollLeft>=max;
+    n.textContent=`${Math.min(REV.length,i+per())} / ${REV.length}`};
+  prev.onclick=()=>tr.scrollBy({left:-step(),behavior:calm?'auto':'smooth'});
+  next.onclick=()=>tr.scrollBy({left:step(),behavior:calm?'auto':'smooth'});
+  let t;tr.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(sync)},{passive:true});
+  addEventListener('resize',sync);sync();
+  const d=$('#rvd');
+  const open=i=>{const r=REV[i];
+    d.innerHTML=`<button class="x" type="button" aria-label="Закрыть">×</button>
+    <div class="rvd-in"><div class="rvd-media gal pic"><div class="rvd-track gal-track" tabindex="0">${r.media.map((m,j)=>m[0]==='v'
+      ?`<video controls playsinline preload="metadata" poster="${R}${m[1]}.jpg" src="${R}${m[1]}.mp4"></video>`
+      :`<img src="${R}${m[1]}.jpg" alt="${r.car}, фото ${j+1}">`).join('')}</div>
+      <button type="button" class="gal-nav prev" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="gal-nav next" aria-label="Дальше"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <span class="gal-n num"></span></div>
+    <div class="rvd-text"><div class="rv-meta"><span class="oval">${RC[r.c][0]}</span>${RC[r.c][1]}</div><h2 id="rvdTitle">${r.car}</h2>${r.facts?`<p class="rv-facts">${r.facts}</p>`:''}
+      ${r.text.map(x=>`<p>${x}</p>`).join('')}
+      <div class="rv-who"><b>${r.who}</b><small>${r.city}</small></div>
+      <a class="rv-all" href="https://t.me/OTZOVIK_by_AUTOMOBILI/${r.post}" target="_blank" rel="noopener">Отзыв в Telegram<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+      <a class="btn" href="#order" data-quiz>Подобрать автомобиль</a></div></div>`;
+    const tk=d.querySelector('.rvd-track'),items=[...tk.children],pv=d.querySelector('.gal-nav.prev'),nx=d.querySelector('.gal-nav.next'),cn=d.querySelector('.gal-n');
+    const idx=()=>Math.round(tk.scrollLeft/Math.max(1,tk.clientWidth));
+    const go=k=>{k=Math.max(0,Math.min(items.length-1,k));tk.scrollTo({left:k*tk.clientWidth,behavior:calm?'auto':'smooth'})};
+    const sy=()=>{const k=idx();cn.textContent=`${k+1} / ${items.length}`;pv.disabled=k<=0;nx.disabled=k>=items.length-1;
+      items.forEach((el,j)=>{if(j!==k&&el.tagName==='VIDEO'&&!el.paused)el.pause()})};
+    const one=items.length<2;pv.hidden=nx.hidden=cn.hidden=one;
+    pv.onclick=()=>go(idx()-1);nx.onclick=()=>go(idx()+1);
+    tk.addEventListener('scroll',()=>requestAnimationFrame(sy),{passive:true});
+    d.onkeydown=e=>{if(e.target.tagName==='VIDEO')return;if(e.key==='ArrowRight'){e.preventDefault();go(idx()+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(idx()-1)}};
+    d.querySelector('.x').onclick=()=>d.close();
+    d.showModal();sy();
+    const v=items[0];if(v.tagName==='VIDEO'&&!calm)v.play().catch(()=>{});
+  };
+  d.addEventListener('close',()=>d.querySelectorAll('video').forEach(v=>v.pause()));
+  d.addEventListener('click',e=>{if(e.target===d)d.close();if(e.target.closest('[data-quiz]'))d.close()});
+  tr.addEventListener('click',e=>{const b=e.target.closest('[data-rv]');if(b)open(+b.dataset.rv)});
 })();
 
 /* ---------- мобильное меню ---------- */
